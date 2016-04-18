@@ -22,8 +22,10 @@
         <activity android:name=".LoginSuccess">
 
         </activity>
+        <activity android:name=".RegistPage">
 
+        </activity>
 
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 </manifest>

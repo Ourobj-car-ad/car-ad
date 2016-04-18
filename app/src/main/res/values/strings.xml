@@ -14,4 +14,16 @@
     <string name="NoAccount">没有账号？</string>
     <string name="Declare">注册即代表您已阅读并同意相关</string>
     <string name="DelDoc">隐私条例</string>
+    <string name="Email">电子邮箱:</string>
+    <string name="Realname">真实姓名:</string>
+    <string name="phone">电话:</string>
+    <string name="carNum">车牌号:</string>
+    <string name="carTravelCode">驾驶证号:</string>
+    <string name="city">所在城市:</string>
+    <string name="Email_hint">请输入你的电子邮件地址</string>
+    <string name="Realname_hint">请输入你的真实姓名</string>
+    <string name="carNum_hint">请输入你的车牌号</string>
+    <string name="phone_hint">请输入你的联系方式</string>
+    <string name="city_hint">请输入你所在的城市</string>
+    <string name="Code_hint">请输入你的驾驶证号</string>
 </resources>

@@ -25,7 +25,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/username"
         android:hint="@string/IDhint"
         android:layout_below="@+id/imageView2"
         android:layout_alignParentLeft="true"
@@ -36,9 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/Password"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/password"
+        android:layout_below="@+id/username"
+        android:layout_centerHorizontal="true"
+        android:password="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,15 +49,15 @@
         android:layout_marginRight="66dp"
         android:layout_marginEnd="66dp"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textView2"
-        android:layout_toStartOf="@+id/textView2"
+        android:layout_toLeftOf="@+id/regist"
+        android:layout_toStartOf="@+id/regist"
         android:layout_marginBottom="103dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/register"
-        android:id="@+id/textView2"
+        android:id="@+id/regist"
         android:layout_marginRight="84dp"
         android:layout_marginEnd="84dp"
         android:clickable="true"
@@ -73,7 +74,7 @@
         android:id="@+id/button"
         android:textSize="20sp"
         android:layout_marginTop="30dp"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/password"
         android:layout_centerHorizontal="true"
         android:background="#3fa314"
         android:textStyle="bold" />
@@ -84,8 +85,8 @@
         android:text="@string/Declare"
         android:id="@+id/textView4"
         android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/textView2"
-        android:layout_toStartOf="@+id/textView2" />
+        android:layout_toLeftOf="@+id/regist"
+        android:layout_toStartOf="@+id/regist" />
 
     <TextView
         android:layout_width="wrap_content"
