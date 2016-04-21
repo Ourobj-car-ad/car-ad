@@ -2,6 +2,7 @@ package com.example.zhengsuren.olddriver;
 
 import android.content.Context;
 import android.content.Intent;
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +33,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String url = "http://139.129.132.60/api/login";
-                new HttpThread(url,username.getText().toString(),password.getText().toString()).start();
-                Intent intent = new Intent(mContext,LoginSuccess.class);
-                startActivity(intent);
+                if ( (username.getText().toString()).isEmpty() || (password.getText().toString()).isEmpty())
+                {
+                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名和密码不能为空！")
+                            .setPositiveButton("确定",null).show();
+                }
+                else {
+                    new HttpThread(url,username.getText().toString(),password.getText().toString()).start();
+                    Intent intent = new Intent(mContext,LoginSuccess.class);
+                    startActivity(intent);
+                }
+
             }
         });
 
