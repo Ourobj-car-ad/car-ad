@@ -1,9 +1,12 @@
 package com.example.zhengsuren.olddriver;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 /**
@@ -12,14 +15,18 @@ import android.widget.RelativeLayout;
 public class LoginSuccess extends AppCompatActivity {
 
     public SlidingMenu mLeftMenu;
+    private Context mContext;
     private RelativeLayout mRL,rl1,rl2,rl3,rl4,rl5;
     private boolean flag = false;
+    private ImageButton bt1;
+    private Handler handler = new Handler();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_success);
 
+        mContext = this;
         mLeftMenu = (SlidingMenu) findViewById(R.id.id_menu);
         mRL = (RelativeLayout) findViewById(R.id.RL);
         rl1 = (RelativeLayout) findViewById(R.id.rl_ad1);
@@ -27,6 +34,36 @@ public class LoginSuccess extends AppCompatActivity {
         rl3 = (RelativeLayout) findViewById(R.id.rl_ad3);
         rl4 = (RelativeLayout) findViewById(R.id.rl_ad4);
         rl5 = (RelativeLayout) findViewById(R.id.rl_ad5);
+
+        bt1 = (ImageButton) findViewById(R.id.id_img1);
+
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+
+        final String url = bundle.getString("url");
+        final String email = bundle.getString("email");
+        final String pwd = bundle.getString("pwd");
+        String adsUrl = "http://139.129.132.60/api/getad";
+
+        new AdsThread(adsUrl,1).start();
+
+        bt1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,PersonActivity.class);
+
+                //用Bundle携带数据
+                Bundle bundle=new Bundle();
+
+                //传递name参数为tinyphp
+                bundle.putString("url", url);
+                bundle.putString("email",email);
+                bundle.putString("pwd",pwd);
+                intent.putExtras(bundle);
+
+                startActivity(intent);
+            }
+        });
     }
 
     public void toggleMenu(View view){

@@ -25,6 +25,9 @@
         <activity android:name=".RegistPage">
 
         </activity>
+        <activity android:name=".PersonActivity">
+
+        </activity>
 
     </application>
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
