@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Handler handler = new Handler();
-    private static boolean check = false;
+    //private static boolean check = false;
 
 
     @Override
@@ -44,14 +44,13 @@ public class MainActivity extends AppCompatActivity {
                     new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名和密码不能为空！")
                             .setPositiveButton("确定",null).show();
                 }
-                else {
-                    new HttpThread(url,username.getText().toString(),password.getText().toString(),
-                            handler,mContext).start();
-
-
-                    handler = new Handler(){
+                else
+                {
+                    handler = new Handler()
+                    {
                         @Override
-                        public void handleMessage(Message msg) {
+                        public void handleMessage(Message msg)
+                        {
                             super.handleMessage(msg);
                             switch (msg.what)
                             {
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                                     {
                                         if (data.getError() == 0)
                                         {
-                                            check = true;
+                                            //check = true;
                                             Intent intent = new Intent(mContext,LoginSuccess.class);
                                             //用Bundle携带数据
                                             Bundle bundle=new Bundle();
@@ -77,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
                                             break;
                                         }
                                     }
+
+                                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名或密码错误！")
+                                            .setPositiveButton("确定",null).show();
                                     break;
                                 }
 
@@ -86,11 +88,19 @@ public class MainActivity extends AppCompatActivity {
                         }
                     };
 
-                    if (check == false)
-                    {
-                        new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名或密码错误！")
-                                .setPositiveButton("确定",null).show();
-                    }
+                    HttpThread thread = new HttpThread(url,username.getText().toString(),
+                                        password.getText().toString(), handler,mContext);
+
+                    thread.start();
+
+                    //public StackTraceElement[] getStackTrace()
+                    //　返回一个堆栈轨迹元素的数组，代表了这个线程的堆栈情况。
+                    //　如果：1.这个线程没有被开启；
+                    //       2.这个线程被开启了但是没有被系统运行过（因为线程运行是需要根据一定规律轮换的）；
+                    //       3.这个线程结束了。
+                    //　这三种情况下getStackTrace()返回的数组长度为0。
+                    //StackTraceElement[] stackTraceElements = Thread.currentThread().getStackTrace();
+
                 }
 
             }
