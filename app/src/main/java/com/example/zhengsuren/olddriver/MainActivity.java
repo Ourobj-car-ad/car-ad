@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             super.handleMessage(msg);
                             switch (msg.what)
                             {
-                                case 0:
+                                case 0://用户名和密码匹配时，正常跳转
                                 {
                                     UserInfo data = (UserInfo) msg.obj;
                                     if (data != null)
@@ -76,9 +76,20 @@ public class MainActivity extends AppCompatActivity {
                                             break;
                                         }
                                     }
+                                   /* else
+                                    {
+                                        new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名或密码错误！")
+                                                .setPositiveButton("确定",null).show();
+                                    }*/
 
+                                    break;
+                                }
+
+                                case 1://用户名或密码错误时，跳出错误提示
+                                {
                                     new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名或密码错误！")
                                             .setPositiveButton("确定",null).show();
+
                                     break;
                                 }
 

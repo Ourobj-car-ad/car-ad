@@ -27,7 +27,7 @@ public class HttpThread extends Thread {
     private String password;
     private Handler mHandler = new Handler();
     private Context context;
-    public volatile boolean exit = false;//设置进程中断标志，当用户名或者密码错误时，中断此进程
+   // public volatile boolean exit = false;//设置进程中断标志，当用户名或者密码错误时，中断此进程
 
     public HttpThread(String url,String username,String password,Handler handler,Context context){
         this.url = url;
@@ -77,7 +77,7 @@ public class HttpThread extends Thread {
             if (0 == errno && errmsg.isEmpty())
             {
                 JSONObject data = object.getJSONObject("data");
-                if (!(data.getString("name").isEmpty()))
+                if (data.length() != 0)
                 {
                     UserInfo user = new UserInfo();
                     String username = data.getString("name");
@@ -105,7 +105,8 @@ public class HttpThread extends Thread {
                     return user;
                 }
 
-                exit = true;
+                //exit = true;
+                return null;
             }
         }
         catch (JSONException e){
@@ -120,11 +121,18 @@ public class HttpThread extends Thread {
 
         if (mUserInfo == null)
         {
-            exit = true;
+            //耗时操作，完成之后发送消息给Handler，完成UI更新；
+            mHandler.sendEmptyMessage(1);
+            //需要数据传递，用下面方法；
+            Message msg = new Message();
+            msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
+            mHandler.sendMessage(msg);
+            //使线程退出
+           // exit = true;
         }
         else
         {
-            if (mUserInfo.getError()==0)
+           /* if (mUserInfo.getError()==0)
             {
                 //耗时操作，完成之后发送消息给Handler，完成UI更新；
                 mHandler.sendEmptyMessage(0);
@@ -132,19 +140,30 @@ public class HttpThread extends Thread {
                 Message msg = new Message();
                 msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
                 mHandler.sendMessage(msg);
-            }
+            }*/
+            //耗时操作，完成之后发送消息给Handler，完成UI更新；
+            mHandler.sendEmptyMessage(0);
+            //需要数据传递，用下面方法；
+            Message msg = new Message();
+            msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
+            mHandler.sendMessage(msg);
         }
     }
 
     @Override
     public void run() {
-        while(!exit)
+        /*while(!exit)
         {
             try {
                 doGet();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }*/
+        try {
+            doGet();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
