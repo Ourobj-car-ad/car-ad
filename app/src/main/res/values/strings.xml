@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">OldDriver</string>
+    <string name="userID">用户名:</string>
+    <string name="password">密码:</string>
+    <string name="IDhint">请输入你的用户名</string>
+    <string name="Password">请输入你的密码</string>
+    <string name="Login">登 录</string>
+    <string name="register">立即注册</string>
+    <string name="Information">个人信息</string>
+    <string name="Myincome">我的收入</string>
+    <string name="DIY">个性化显示</string>
+    <string name="Others">其他信息</string>
+    <string name="Advertisement">1.公司广告内容</string>
+    <string name="Advertisement2">2.公司广告内容</string>
+    <string name="Advertisement3">3.公司广告内容</string>
+    <string name="Advertisement4">4.公司广告内容</string>
+    <string name="Advertisement5">5.公司广告内容</string>
+    <string name="NoAccount">没有账号？</string>
+    <string name="Declare">注册即代表您已阅读并同意相关</string>
+    <string name="DelDoc">隐私条例</string>
+    <string name="Email">电子邮箱:</string>
+    <string name="Realname">真实姓名:</string>
+    <string name="phone">电话:</string>
+    <string name="carNum">车牌号:</string>
+    <string name="carTravelCode">驾驶证号:</string>
+    <string name="city">所在城市:</string>
+    <string name="Email_hint">请输入你的电子邮件地址</string>
+    <string name="Realname_hint">请输入你的真实姓名</string>
+    <string name="carNum_hint">请输入你的车牌号</string>
+    <string name="phone_hint">请输入你的联系方式</string>
+    <string name="city_hint">请输入你所在的城市</string>
+    <string name="Code_hint">请输入你的驾驶证号</string>
+    <string name="Personal">“个性化定制</string>
+    <string name="You_may">您可能想说:</string>
+    <string name="words">没时间解释了！</string>
+    <string name="words2">快上车！！</string>
+</resources>
