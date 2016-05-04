@@ -13,16 +13,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp">
             <TextView
-                android:layout_width="230dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:text="@string/Personal"
                 android:textStyle="italic"
                 android:textSize="40sp"/>
             <ImageButton
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="250dp"
+                android:layout_width="80dp"
+                android:layout_height="75dp"
+                android:layout_marginLeft="230dp"
                 android:layout_marginTop="20dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/driver"
@@ -52,8 +52,7 @@
             <ImageButton
                 android:layout_width="60dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="255dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="240dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/message"
                 android:id="@+id/id_img2"/>
@@ -72,7 +71,7 @@
             <ImageButton
                 android:layout_width="60dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="255dp"
+                android:layout_marginLeft="240dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/speak"
@@ -92,8 +91,8 @@
             <ImageButton
                 android:layout_width="60dp"
                 android:layout_height="50dp"
-                android:layout_marginLeft="258dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginLeft="243dp"
+                android:layout_marginTop="40dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/earning"
                 android:id="@+id/id_img4"/>
@@ -109,16 +108,16 @@
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="255dp"
+            android:layout_marginLeft="240dp"
             android:layout_marginTop="15dp"
             android:src="@drawable/location"
             android:id="@+id/id_img5"/>
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="50dp"
-            android:layout_marginLeft="255dp"
+            android:layout_marginLeft="240dp"
             android:layout_below="@+id/id_img5"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="35dp"
             android:src="@drawable/setting"
             android:id="@+id/id_img6"/>
         <ImageButton

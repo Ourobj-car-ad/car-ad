@@ -77,7 +77,7 @@ public class AdsThread extends Thread {
                 JSONObject data = object.getJSONObject("data");
                 AdsInfo ads = new AdsInfo();
                 String id = data.getString("id");
-                String update_time = data.getString("update_time");
+                String update_time = data.getString("title");
                 String content = data.getString("content");
 
                 ads.setContent(content);
