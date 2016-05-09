@@ -54,7 +54,6 @@ public class LoginSuccess extends AppCompatActivity {
         final String url = bundle.getString("url");
         final String email = bundle.getString("email");
         final String pwd = bundle.getString("pwd");
-        //String adsUrl = "http://139.129.132.60/api/getad";
 
         for (int i=1;i<6;i++)
         {
@@ -188,6 +187,7 @@ public class LoginSuccess extends AppCompatActivity {
                 bundle.putString("email",email);
                 bundle.putString("pwd",pwd);
                 intent.putExtras(bundle);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 startActivity(intent);
             }

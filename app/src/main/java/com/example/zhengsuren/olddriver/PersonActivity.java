@@ -37,31 +37,31 @@ public class PersonActivity extends AppCompatActivity {
         context = this;
 
         Handler mHandler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    super.handleMessage(msg);
-                    switch (msg.what) {
-                        case 0: {
-                            //完成主界面更新,拿到数据
-                            UserInfo data = (UserInfo) msg.obj;
-                            if (data != null){
-                                if (data.getError()==0)
-                                {
-                                    username.setText(data.getUsername());
-                                    realname.setText(data.getRealname());
-                                    email1.setText(data.getEmail());
-                                    phone.setText(data.getPhone());
-                                    driverId.setText(data.getDriverId());
-                                    alipay.setText(data.getAlipay());
-                                    carnum.setText(data.getCarnum());
-                                }
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what) {
+                    case 0: {
+                        //完成主界面更新,拿到数据
+                        UserInfo data = (UserInfo) msg.obj;
+                        if (data != null){
+                            if (data.getError()==0)
+                            {
+                                username.setText(data.getUsername());
+                                realname.setText(data.getRealname());
+                                email1.setText(data.getEmail());
+                                phone.setText(data.getPhone());
+                                driverId.setText(data.getDriverId());
+                                alipay.setText(data.getAlipay());
+                                carnum.setText(data.getCarnum());
                             }
-                            break;
                         }
-                        default:
-                            break;
+                        break;
                     }
+                    default:
+                        break;
                 }
+            }
         };
         new HttpThread(url, email, pwd, mHandler, context).start();
     }

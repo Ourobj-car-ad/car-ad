@@ -19,13 +19,13 @@
         <activity android:name=".LeftMenu">
 
         </activity>
-        <activity android:name=".LoginSuccess">
+        <activity android:name=".LoginSuccess" android:launchMode="singleTop">
 
         </activity>
         <activity android:name=".RegistPage">
 
         </activity>
-        <activity android:name=".PersonActivity">
+        <activity android:name=".PersonActivity" android:launchMode="singleTop">
 
         </activity>
 
