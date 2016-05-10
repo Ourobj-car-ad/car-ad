@@ -132,15 +132,6 @@ public class HttpThread extends Thread {
         }
         else
         {
-           /* if (mUserInfo.getError()==0)
-            {
-                //耗时操作，完成之后发送消息给Handler，完成UI更新；
-                mHandler.sendEmptyMessage(0);
-                //需要数据传递，用下面方法；
-                Message msg = new Message();
-                msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
-                mHandler.sendMessage(msg);
-            }*/
             //耗时操作，完成之后发送消息给Handler，完成UI更新；
             mHandler.sendEmptyMessage(0);
             //需要数据传递，用下面方法；
@@ -152,14 +143,6 @@ public class HttpThread extends Thread {
 
     @Override
     public void run() {
-        /*while(!exit)
-        {
-            try {
-                doGet();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }*/
         try {
             doGet();
         } catch (IOException e) {

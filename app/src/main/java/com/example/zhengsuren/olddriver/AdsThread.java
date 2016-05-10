@@ -79,12 +79,21 @@ public class AdsThread extends Thread {
                 String id = data.getString("id");
                 String update_time = data.getString("title");
                 String content = data.getString("content");
+                int ads_lenth = content.length();
+                double ads_per_time = ads_lenth/10.0;
+                int ads_times = (int) (600/ads_per_time);
 
                 ads.setContent(content);
                 ads.setId(id);
                 ads.setUpdate_time(update_time);
+                ads.setAds_per_time(ads_per_time);//以显示屏可以一次显示10个字符为标准，每播放10个字符需要1秒
+                ads.setAds_times(ads_times);//计算10分钟内广告播放的次数
 
                 System.out.println("the ads content is:~~~~~~~~" + content);
+                System.out.println("the ads lenth is:~~~~~~~~~~" + ads_lenth);
+                System.out.println("ads per time is:~~~~~~~~~" + ads.getAds_per_time());
+                System.out.println("ads play " + ads.getAds_times() + " times in 10min!");
+
                 return ads;
             }
         }

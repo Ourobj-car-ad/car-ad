@@ -7,8 +7,28 @@ public class AdsInfo {
     //广告信息类
     private String id,update_time,content;
 
+    private double ads_per_time;
+
+    private int ads_times;
+
     public String getId() {
         return id;
+    }
+
+    public double getAds_per_time() {
+        return ads_per_time;
+    }
+
+    public void setAds_per_time(double ads_per_time) {
+        this.ads_per_time = ads_per_time;
+    }
+
+    public int getAds_times() {
+        return ads_times;
+    }
+
+    public void setAds_times(int ads_times) {
+        this.ads_times = ads_times;
     }
 
     public void setId(String id) {
