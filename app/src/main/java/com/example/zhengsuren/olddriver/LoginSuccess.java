@@ -365,7 +365,6 @@ public class LoginSuccess extends AppCompatActivity {
         }
         else {
             mRL.setVisibility(View.GONE);
-            //mRL.setAnimation();
             rl1.setVisibility(View.VISIBLE);
             rl2.setVisibility(View.VISIBLE);
             rl3.setVisibility(View.VISIBLE);
@@ -406,7 +405,6 @@ public class LoginSuccess extends AppCompatActivity {
         }
         else {
             mRL.setVisibility(View.GONE);
-            //mRL.setAnimation();
             rl1.setVisibility(View.VISIBLE);
             rl2.setVisibility(View.VISIBLE);
             rl3.setVisibility(View.VISIBLE);
