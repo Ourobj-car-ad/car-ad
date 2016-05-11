@@ -3,6 +3,9 @@ package com.example.zhengsuren.olddriver;
 import android.content.Context;
 import android.content.Intent;
 import android.app.AlertDialog;
+import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -34,11 +37,45 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
 
+        /*PackageManager pm = getPackageManager();
+
+            boolean permission = (PackageManager.PERMISSION_GRANTED ==
+                    pm.checkPermission("android.permission.INTERNET", "com.example.zhengsuren.olddriver"));
+            if (permission) {
+                System.out.println("有权限～～～～～～～～！");
+            }else {
+                System.out.println("木有这个权限～～～～！");
+                new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
+                        .setPositiveButton("确定",null).show();
+            }*/
+        if (isNetworkAvailable(MainActivity.this))
+        {
+            System.out.println("网络连接正常～～～～～～～！");
+        }
+        else
+        {
+            System.out.println("网络连接异常～！！！！！！！");
+            new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
+                        .setPositiveButton("确定",null).show();
+        }
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String url = "http://139.129.132.60/api/login";
+
+                if (isNetworkAvailable(MainActivity.this))
+                {
+                    System.out.println("网络连接正常～～～～～～～！");
+                }
+                else
+                {
+                    System.out.println("网络连接异常～！！！！！！！");
+                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
+                            .setPositiveButton("确定",null).show();
+                }
+
+
                 if ( (username.getText().toString()).isEmpty() || (password.getText().toString()).isEmpty())
                 {
                     new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名和密码不能为空！")
@@ -126,5 +163,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    public boolean isNetworkAvailable(AppCompatActivity activity)
+    {
+        Context context = activity.getApplicationContext();
+        // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        if (connectivityManager == null)
+        {
+            return false;
+        }
+        else
+        {
+            // 获取NetworkInfo对象
+            NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
+
+            if (networkInfo != null && networkInfo.length > 0)
+            {
+                for (int i = 0; i < networkInfo.length; i++)
+                {
+                    System.out.println(i + "===状态===" + networkInfo[i].getState());
+                    System.out.println(i + "===类型===" + networkInfo[i].getTypeName());
+                    // 判断当前网络状态是否为连接状态
+                    if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED)
+                    {
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
     }
 }
