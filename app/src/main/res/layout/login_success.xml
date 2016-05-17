@@ -11,11 +11,11 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <include layout="@layout/left_menu"/>
-                <RelativeLayout
+
+            <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="vertical">
-
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -23,7 +23,6 @@
                         <!--
                             这里的图片到时需要改为文字和数据库中的具体数字
                         -->
-
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -37,6 +36,7 @@
                             android:src="@drawable/menu_s"
                             android:background="#ffffff"/>
                     </RelativeLayout>
+
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
@@ -52,6 +52,10 @@
                             android:layout_centerVertical="true"
                             android:textSize="20sp"
                             android:textColor="#000000"/>
+                        <View
+                            android:layout_height="1px"
+                            android:layout_width="match_parent"
+                            android:background="#ff888888" />
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -62,6 +66,7 @@
                             android:layout_alignParentRight="true"
                             android:layout_alignParentEnd="true" />
                     </RelativeLayout>
+
 
 
                     <RelativeLayout
@@ -79,6 +84,10 @@
                             android:layout_centerVertical="true"
                             android:textSize="20sp"
                             android:textColor="#000000"/>
+                        <View
+                            android:layout_height="1px"
+                            android:layout_width="match_parent"
+                            android:background="#ff888888" />
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -104,6 +113,10 @@
                             android:layout_centerVertical="true"
                             android:textSize="20sp"
                             android:textColor="#000000"/>
+                        <View
+                            android:layout_height="1px"
+                            android:layout_width="match_parent"
+                            android:background="#ff888888" />
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -129,6 +142,10 @@
                             android:layout_centerVertical="true"
                             android:textSize="20sp"
                             android:textColor="#000000"/>
+                        <View
+                            android:layout_height="1px"
+                            android:layout_width="match_parent"
+                            android:background="#ff888888" />
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -154,6 +171,10 @@
                             android:layout_centerVertical="true"
                             android:textSize="20sp"
                             android:textColor="#000000"/>
+                        <View
+                            android:layout_height="1px"
+                            android:layout_width="match_parent"
+                            android:background="#ff888888" />
                         <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

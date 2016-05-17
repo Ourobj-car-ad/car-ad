@@ -22,7 +22,7 @@ public class LoginSuccess extends AppCompatActivity {
     private RelativeLayout mRL,rl1,rl2,rl3,rl4,rl5;
     private TextView tv1,tv2,tv3,tv4,tv5,tvm;
     private boolean flag = false;
-    private ImageButton bt1,bt5;
+    private ImageButton bt1,bt5,bt6;
     private String adsUrl = "http://139.129.132.60/api/getad";
 
     @Override
@@ -48,6 +48,7 @@ public class LoginSuccess extends AppCompatActivity {
 
         bt1 = (ImageButton) findViewById(R.id.id_img1);
         bt5 = (ImageButton) findViewById(R.id.id_img5);
+        bt6 = (ImageButton) findViewById(R.id.id_img6);
 
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
@@ -198,6 +199,15 @@ public class LoginSuccess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,Map.class);
+
+                startActivity(intent);
+            }
+        });
+
+        bt6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext,SettingActivity.class);
 
                 startActivity(intent);
             }

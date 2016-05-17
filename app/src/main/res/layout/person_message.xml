@@ -8,7 +8,7 @@
     <RelativeLayout
         android:id="@+id/id_toplayout"
         android:layout_width="match_parent"
-        android:layout_height="220dp"
+        android:layout_height="180dp"
         android:background="@drawable/backgroud">
         <ImageView
             android:id="@+id/id_head"
@@ -37,7 +37,7 @@
         <TableRow
             android:id="@+id/id_mess1"
             android:layout_height="30dp"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:layout_height="wrap_content"
@@ -52,6 +52,12 @@
                 android:gravity="right"/>
 
         </TableRow>
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
 
         <TableRow
             android:layout_height="30dp"
@@ -71,6 +77,12 @@
 
         </TableRow>
 
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
+
         <TableRow
             android:layout_height="30dp"
             android:layout_marginTop="15dp">
@@ -88,6 +100,12 @@
                 android:gravity="right"/>
 
         </TableRow>
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
 
         <TableRow
             android:layout_height="30dp"
@@ -107,6 +125,12 @@
 
         </TableRow>
 
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
+
         <TableRow
             android:layout_height="30dp"
             android:layout_marginTop="15dp">
@@ -124,6 +148,12 @@
                 android:gravity="right"/>
 
         </TableRow>
+
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
 
         <TableRow
             android:layout_height="30dp"
@@ -143,9 +173,15 @@
 
         </TableRow>
 
+        <View
+            android:layout_height="1px"
+            android:layout_width="match_parent"
+            android:layout_marginTop="10dp"
+            android:background="#ff888888" />
+
         <TableRow
             android:layout_height="30dp"
-            android:layout_marginTop="15dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:layout_height="wrap_content"

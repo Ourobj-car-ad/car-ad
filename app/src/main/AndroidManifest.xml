@@ -33,6 +33,10 @@
 
         </activity>
 
+        <activity android:name=".SettingActivity">
+
+        </activity>
+
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
             android:value="APWfKpR1m9CuShKT8nllGMnyASjaSpfM"/>

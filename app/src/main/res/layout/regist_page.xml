@@ -13,13 +13,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/logo"/>
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,7 +164,7 @@
             android:text="@string/register"
             android:id="@+id/regist_button"
             android:textSize="20sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
             android:background="#3fa314"
             android:textStyle="bold" />
