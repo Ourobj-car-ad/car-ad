@@ -35,6 +35,7 @@ public class AdsThread extends Thread {
     }
 
     private AdsInfo request() {
+        //获得广告
         url = url + "?id=" + id ;
         try {
             URL HttpURL = new URL(url);
@@ -79,6 +80,7 @@ public class AdsThread extends Thread {
                 String id = data.getString("id");
                 String update_time = data.getString("title");
                 String content = data.getString("content");
+                String advertiser_id = data.getString("advertiser_id");
                 int ads_lenth = content.length();
                 double ads_per_time = ads_lenth/10.0;
                 int ads_times = (int) (600/ads_per_time);
@@ -88,6 +90,7 @@ public class AdsThread extends Thread {
                 ads.setUpdate_time(update_time);
                 ads.setAds_per_time(ads_per_time);//以显示屏可以一次显示10个字符为标准，每播放10个字符需要1秒
                 ads.setAds_times(ads_times);//计算10分钟内广告播放的次数
+                ads.setAdvertiser_id(advertiser_id);
 
                 System.out.println("the ads content is:~~~~~~~~" + content);
                 System.out.println("the ads lenth is:~~~~~~~~~~" + ads_lenth);
@@ -104,6 +107,29 @@ public class AdsThread extends Thread {
         return null;
     }
 
+    private void callBack(String adId,String advertiserId,String userId)
+    {
+        String url = "http://139.129.132.60/api/addorder?price=5000&regionInfo=test" + "&adId=" + adId +
+                "&advertiserId=" + advertiserId + "&userId=" + userId;
+
+        try {
+            URL HttpURL = new URL(url);
+
+            HttpURLConnection conn = (HttpURLConnection) HttpURL.openConnection();
+            conn.setReadTimeout(5000);
+            conn.setRequestMethod("GET");
+
+            System.out.println("数据回传成功～～～～～～～！！");
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void doGet() throws IOException
     {
          AdsInfo adsInfo = request();
@@ -115,6 +141,8 @@ public class AdsThread extends Thread {
              Message msg =new Message();
              msg.obj = adsInfo;//可以是基本类型，可以是对象，可以是List、map等；
              handler.sendMessage(msg);
+
+
          }
     }
 

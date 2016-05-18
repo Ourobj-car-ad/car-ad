@@ -71,7 +71,8 @@ public class LoginSuccess extends AppCompatActivity {
                                 AdsInfo data = (AdsInfo) msg.obj;
                                 if (data != null){
                                     tv1.setText(data.getUpdate_time());
-                                   // tvm.setText(data.getContent());
+                                    //回传数据，此处假设该广告播放了10分钟。。。
+                                    new CallBackThread(data.getId(),data.getAdvertiser_id(),email).start();
                                 }
                                 break;
                             }
@@ -95,6 +96,8 @@ public class LoginSuccess extends AppCompatActivity {
                                 if (data != null){
                                     tv2.setText(data.getUpdate_time());
                                    // tvm.setText(data.getContent());
+                                    //回传数据，此处假设该广告播放了10分钟。。。
+                                    new CallBackThread(data.getId(),data.getAdvertiser_id(),email).start();
                                 }
                                 break;
                             }
@@ -118,6 +121,8 @@ public class LoginSuccess extends AppCompatActivity {
                                 if (data != null){
                                     tv3.setText(data.getUpdate_time());
                                    // tvm.setText(data.getContent());
+                                    //回传数据，此处假设该广告播放了10分钟。。。
+                                    new CallBackThread(data.getId(),data.getAdvertiser_id(),email).start();
                                 }
                                 break;
                             }
@@ -141,6 +146,8 @@ public class LoginSuccess extends AppCompatActivity {
                                 if (data != null){
                                     tv4.setText(data.getUpdate_time());
                                    // tvm.setText(data.getContent());
+                                    //回传数据，此处假设该广告播放了10分钟。。。
+                                    new CallBackThread(data.getId(),data.getAdvertiser_id(),email).start();
                                 }
                                 break;
                             }
@@ -164,6 +171,8 @@ public class LoginSuccess extends AppCompatActivity {
                                 if (data != null){
                                     tv5.setText(data.getUpdate_time());
                                    // tvm.setText(data.getContent());
+                                    //回传数据，此处假设该广告播放了10分钟。。。
+                                    new CallBackThread(data.getId(),data.getAdvertiser_id(),email).start();
                                 }
                                 break;
                             }
