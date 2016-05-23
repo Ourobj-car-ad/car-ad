@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/empty_cart_view"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffefebe7" >
@@ -12,7 +11,6 @@
         android:layout_height="50.0dip" >
 
         <TextView
-            android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -45,14 +43,12 @@
             android:layout_height="wrap_content" >
 
             <TableLayout
-                android:id="@+id/MorePageTableLayout_Favorite"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:shrinkColumns="0"
                 android:stretchColumns="0" >
 
                 <TableRow
-                    android:id="@+id/more_page_row0"
                     android:layout_width="fill_parent"
                     android:layout_marginLeft="2.0dip"
                     android:layout_marginRight="2.0dip"
@@ -85,7 +81,6 @@
         android:layout_height="wrap_content" >
 
         <TableLayout
-            android:id="@+id/MorePageTableLayout_Follow"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="1.0dip"
@@ -93,7 +88,6 @@
             android:stretchColumns="0" >
 
             <TableRow
-                android:id="@+id/more_page_row1"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -124,7 +118,6 @@
                 android:background="#ff888888" />
 
             <TableRow
-                android:id="@+id/more_page_row2"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -155,7 +148,6 @@
                 android:background="#ff888888" />
 
             <TableRow
-                android:id="@+id/more_page_row3"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -203,7 +195,6 @@
         android:layout_height="wrap_content" >
 
         <TableLayout
-            android:id="@+id/MorePageTableLayout_Client"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="1.0dip"
@@ -211,7 +202,6 @@
             android:stretchColumns="0" >
 
             <TableRow
-                android:id="@+id/more_page_row4"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -242,7 +232,6 @@
                 android:background="#ff888888" />
 
             <TableRow
-                android:id="@+id/more_page_row5"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -273,7 +262,6 @@
                 android:background="#ff888888" />
 
             <TableRow
-                android:id="@+id/more_page_row6"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"
@@ -304,7 +292,6 @@
                 android:background="#ff888888" />
 
             <TableRow
-                android:id="@+id/more_page_row7"
                 android:layout_width="fill_parent"
                 android:layout_marginLeft="2.0dip"
                 android:layout_marginRight="2.0dip"

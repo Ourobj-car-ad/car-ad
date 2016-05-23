@@ -54,8 +54,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="240dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/message"
-                android:id="@+id/id_img2"/>
+                android:src="@drawable/message" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -74,8 +73,7 @@
                 android:layout_marginLeft="240dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/speak"
-                android:id="@+id/id_img3"/>
+                android:src="@drawable/speak" />
 
         </RelativeLayout>
         <RelativeLayout
@@ -94,8 +92,7 @@
                 android:layout_marginLeft="243dp"
                 android:layout_marginTop="40dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/earning"
-                android:id="@+id/id_img4"/>
+                android:src="@drawable/earning" />
 
         </RelativeLayout>
 

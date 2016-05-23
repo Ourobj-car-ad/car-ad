@@ -3,7 +3,6 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/person_info_layout"
     android:background="#ffffff">
     <RelativeLayout
         android:id="@+id/id_toplayout"
@@ -35,7 +34,6 @@
         android:layout_below="@id/id_toplayout">
 
         <TableRow
-            android:id="@+id/id_mess1"
             android:layout_height="30dp"
             android:layout_marginTop="20dp">
 

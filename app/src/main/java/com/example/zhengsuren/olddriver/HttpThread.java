@@ -27,7 +27,6 @@ public class HttpThread extends Thread {
     private String password;
     private Handler mHandler = new Handler();
     private Context context;
-   // public volatile boolean exit = false;//设置进程中断标志，当用户名或者密码错误时，中断此进程
 
     public HttpThread(String url,String username,String password,Handler handler,Context context){
         this.url = url;

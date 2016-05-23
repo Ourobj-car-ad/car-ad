@@ -28,5 +28,5 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.1'
-    compile files('libs/BaiduLBS_Android.jar')
+    compile files('libs/AMap3DMap_3.3.1_AMapSearch_3.2.1_AMapLocation_2.4.1_20160425.jar')
 }

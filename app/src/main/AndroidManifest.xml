@@ -8,8 +8,14 @@
         android:icon="@mipmap/logo"
         android:label="OldDriver"
         android:theme="@style/Theme.AppCompat.NoActionBar">
+        <service android:name="com.amap.api.location.APSService">
+        </service>
 
-        <activity android:name=".MainActivity">
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="37c4006091b814e8cee5f5be0d8c21d3" />
+
+        <activity android:name=".MainActivity" android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,38 +28,32 @@
         <activity android:name=".LoginSuccess" android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".RegistPage">
+        <activity android:name=".RegistPage" android:launchMode="singleTop">
+
 
         </activity>
         <activity android:name=".PersonActivity" android:launchMode="singleTop">
 
         </activity>
 
-        <activity android:name=".Map">
+        <activity android:name=".Map" android:launchMode="singleTop">
 
         </activity>
 
-        <activity android:name=".SettingActivity">
+        <activity android:name=".SettingActivity" android:launchMode="singleTop">
 
         </activity>
-
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="APWfKpR1m9CuShKT8nllGMnyASjaSpfM"/>
 
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WAKE_LOCK"/>
-    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
 
 </manifest>

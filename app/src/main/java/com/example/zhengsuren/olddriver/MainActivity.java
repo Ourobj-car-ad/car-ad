@@ -37,17 +37,6 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
 
-        /*PackageManager pm = getPackageManager();
-
-            boolean permission = (PackageManager.PERMISSION_GRANTED ==
-                    pm.checkPermission("android.permission.INTERNET", "com.example.zhengsuren.olddriver"));
-            if (permission) {
-                System.out.println("有权限～～～～～～～～！");
-            }else {
-                System.out.println("木有这个权限～～～～！");
-                new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
-                        .setPositiveButton("确定",null).show();
-            }*/
         if (isNetworkAvailable(MainActivity.this))
         {
             System.out.println("网络连接正常～～～～～～～！");
@@ -58,6 +47,28 @@ public class MainActivity extends AppCompatActivity {
             new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
                         .setPositiveButton("确定",null).show();
         }
+
+        //页面接收数据
+        /*Bundle bundle = this.getIntent().getExtras();
+
+        if (bundle != null)
+        {
+            String regist_result = bundle.getString("regist_result");
+
+            if (regist_result != null)
+            {
+                if (regist_result.equals("true"))
+                {
+                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
+                            .setPositiveButton("确定",null).show();
+                }
+                else if (regist_result.equals("false"))
+                {
+                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册失败，请重试！")
+                            .setPositiveButton("确定",null).show();
+                }
+            }
+        }*/
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,11 +126,6 @@ public class MainActivity extends AppCompatActivity {
                                             break;
                                         }
                                     }
-                                   /* else
-                                    {
-                                        new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("用户名或密码错误！")
-                                                .setPositiveButton("确定",null).show();
-                                    }*/
 
                                     break;
                                 }
@@ -160,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,RegistPage.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
