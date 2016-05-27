@@ -56,7 +56,7 @@ public class HttpThread2 extends Thread {
                 if (data.length() != 0)
                 {
                     String check_type = data.getString("type");
-                    if (check_type.equalsIgnoreCase("add"))
+                    if (check_type == "add")
                     {
                         return true;
                     }
@@ -101,7 +101,7 @@ public class HttpThread2 extends Thread {
             e.printStackTrace();
         }
 
-        /*if (!result)
+        if (!result)
         {
             //注册失败
             mHandler.sendEmptyMessage(1);
@@ -109,14 +109,14 @@ public class HttpThread2 extends Thread {
             Message msg = new Message();
             mHandler.sendMessage(msg);
         }
-        else
+        else if (result)
         {
             //注册成功
             mHandler.sendEmptyMessage(0);
             //需要数据传递，用下面方法；
             Message msg = new Message();
             mHandler.sendMessage(msg);
-        }*/
+        }
     }
 
     @Override

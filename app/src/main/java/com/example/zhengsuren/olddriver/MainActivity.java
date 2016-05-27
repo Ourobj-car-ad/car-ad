@@ -22,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private Context mContext;
     private EditText username;
     private EditText password;
-    private Handler handler = new Handler();
-    //private static boolean check = false;
+    private Handler handler = null;
+    private MyHandler handler_for_regist = null;
+    private MyApp mApp = null;
 
 
     @Override
@@ -36,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         mContext = this;
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
+        handler = new Handler();
+        mApp = (MyApp) this.getApplication();
+        handler_for_regist = new MyHandler();
 
         if (isNetworkAvailable(MainActivity.this))
         {
@@ -47,28 +51,6 @@ public class MainActivity extends AppCompatActivity {
             new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
                         .setPositiveButton("确定",null).show();
         }
-
-        //页面接收数据
-        /*Bundle bundle = this.getIntent().getExtras();
-
-        if (bundle != null)
-        {
-            String regist_result = bundle.getString("regist_result");
-
-            if (regist_result != null)
-            {
-                if (regist_result.equals("true"))
-                {
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
-                            .setPositiveButton("确定",null).show();
-                }
-                else if (regist_result.equals("false"))
-                {
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册失败，请重试！")
-                            .setPositiveButton("确定",null).show();
-                }
-            }
-        }*/
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
                                             //传递name参数为tinyphp
                                             bundle.putString("url", url);
+                                            bundle.putString("id",data.getId());
                                             bundle.putString("email",username.getText().toString());
                                             bundle.putString("pwd", password.getText().toString());
                                             intent.putExtras(bundle);
@@ -165,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
         regist.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                mApp.setHandler(handler_for_regist);
                 Intent intent = new Intent(mContext,RegistPage.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
@@ -202,5 +186,33 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    final class MyHandler extends Handler
+    {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            switch (msg.what)
+            {
+                case 0:
+                {
+                    //注册成功
+                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
+                            .setPositiveButton("确定",null).show();
+                    break;
+                }
+
+                case 1:
+                {
+                    //注册失败
+
+                    break;
+                }
+
+                default:
+                    break;
+            }
+        }
     }
 }

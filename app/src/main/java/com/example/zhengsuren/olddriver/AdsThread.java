@@ -22,11 +22,11 @@ public class AdsThread extends Thread {
     //调用了获得广告的api，实现将服务器返回的广告信息解析，并将解析后的数据返回给主线程（LoginSuccess）
 
     private String url;
-    private int id;
+    private String id;
     private Handler handler = new Handler();
     private Context context;
 
-    public AdsThread(String url,int id,Handler handler,Context context)
+    public AdsThread(String url,String id,Handler handler,Context context)
     {
         this.url = url;
         this.id = id;

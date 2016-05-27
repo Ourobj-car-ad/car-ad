@@ -7,7 +7,8 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="OldDriver"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:name=".MyApp">
         <service android:name="com.amap.api.location.APSService">
         </service>
 

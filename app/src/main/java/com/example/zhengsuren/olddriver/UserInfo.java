@@ -4,7 +4,7 @@ package com.example.zhengsuren.olddriver;
  * Created by zhengsuren on 16/4/26.
  */
 public class UserInfo {
-    private String username,realname,email,phone,driverId,alipay,carnum,earnings,cartranum;
+    private String id,username,realname,email,phone,driverId,alipay,carnum,earnings,cartranum;
     private int error = 1;
 
     public int getError() {
@@ -15,8 +15,17 @@ public class UserInfo {
         this.error = error;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getRealname() {
         return realname;
+
 
     }
 

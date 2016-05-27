@@ -79,6 +79,7 @@ public class HttpThread extends Thread {
                 if (data.length() != 0)
                 {
                     UserInfo user = new UserInfo();
+                    String id = data.getString("id");
                     String username = data.getString("name");
                     String email = data.getString("email");
                     String phone = data.getString("phone");
@@ -89,6 +90,7 @@ public class HttpThread extends Thread {
                     String carnum = data.getString("car_code");
                     String earnings = data.getString("earnings");
 
+                    user.setId(id);
                     user.setAlipay(alipay);
                     user.setCarnum(carnum);
                     user.setEarnings(earnings);

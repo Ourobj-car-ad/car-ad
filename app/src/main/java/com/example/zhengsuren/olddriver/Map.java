@@ -1,7 +1,9 @@
 package com.example.zhengsuren.olddriver;
 
 
-        import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
         import android.graphics.Color;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
@@ -41,6 +43,10 @@ public class Map extends AppCompatActivity
     private PoiOverlay poiOverlay;// poi图层
     private List<PoiItem> poiItems;// poi数据
     private PoiItem mPoi;
+    private boolean hasThisType = false;
+    private String[] search = {"科教文化服务","医疗保健服务","购物服务","餐饮服务","汽车服务","风景名胜","公司企业","生活服务"} ;
+    private static Types types;
+
     public AMapLocationClientOption mLocationOption = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +54,7 @@ public class Map extends AppCompatActivity
         setContentView(R.layout.map_activity);
         mMapView = (MapView) findViewById(R.id.map);
         AMapLocationClient mLocationClient = null;
+        types = new Types();
 
 
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，实现地图生命周期管理
@@ -56,7 +63,7 @@ public class Map extends AppCompatActivity
         mLocationClient.setLocationListener(this);
         mLocationOption = new AMapLocationClientOption();
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        mLocationOption.setInterval(3000);       //单位毫秒
+        mLocationOption.setInterval(10000);       //单位毫秒
         mLocationClient.setLocationOption(mLocationOption);
 
         aMap = mMapView.getMap();
@@ -76,11 +83,10 @@ public class Map extends AppCompatActivity
         */
 
 
-
     }
-    protected  void doSearchQuery(){
-        PoiSearch.Query query = new PoiSearch.Query("", "购物服务", "上海市");
-        query.setPageSize(3);// 设置每页最多返回多少条poiitem
+    protected void doSearchQuery(String para){
+        PoiSearch.Query query = new PoiSearch.Query("", para, "上海市");
+        query.setPageSize(8);// 设置每页最多返回多少条poiitem
         query.setPageNum(0);//设置查第一页
         if (cenpt != null) {
             LatLonPoint lp = new LatLonPoint(cenpt.latitude, cenpt.longitude);
@@ -135,8 +141,19 @@ public class Map extends AppCompatActivity
                         .fillColor(Color.argb(10, 0, 0, 255))
                         .strokeWidth(2));
 
+                for (int count = 0;count < 8;count++)
+                {
+                    //检查周边都有哪些服务，并更新结果字符串
+                    doSearchQuery(search[count]);
+                    if (hasThisType)
+                    {
+                        types.setTypes(search[count]);
+                        break;
+                    }
+                }
 
-                doSearchQuery();
+                String mtypes = types.getTypes();
+                System.out.println(mtypes);
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"
@@ -167,6 +184,8 @@ public class Map extends AppCompatActivity
                 if(!result.getPois().toString().equals("[]")){
                     poiOverlay = new PoiOverlay(aMap, result.getPois());
                     poiOverlay.addToMap();
+                    hasThisType = true;
+
                     Log.i("Poi", result.getPois().toString());
                 }
                 else {

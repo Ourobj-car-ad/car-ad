@@ -19,8 +19,10 @@ public class RegistPage extends AppCompatActivity {
     private Button bt2;
     private Context mContext;
     private EditText r_userID,r_password,r_email,r_realname,r_phone,r_carNum,r_carTravelCode;
-    private Handler handler = new Handler();
-    private boolean regist_result = false;
+    private Handler handler = null;
+    private MainActivity.MyHandler handler_for_regist = null;
+    private MyApp mApp = null;
+    private static boolean flag = false;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class RegistPage extends AppCompatActivity {
         r_phone = (EditText) findViewById(R.id.r_phone);
         r_userID = (EditText) findViewById(R.id.r_userID);
         r_realname = (EditText) findViewById(R.id.r_realname);
+        mApp = (MyApp) this.getApplication();
+        handler = new Handler();
+        handler_for_regist = mApp.getHandler();
 
         bt2.setOnClickListener(new View.OnClickListener()
         {
@@ -44,22 +49,27 @@ public class RegistPage extends AppCompatActivity {
             {
                 String url = "http://139.129.132.60/api/sign";
 
-                /*handler = new Handler() {
+                handler = new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
                         switch (msg.what) {
                             case 0://注册成功
                             {
-                                regist_result = true;
-
+                                handler_for_regist.sendEmptyMessage(0);
+                                Message msg0 = new Message();
+                                handler_for_regist.sendMessage(msg0);
+                                //new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
+                                  //      .setPositiveButton("确定",null).show();
+                                flag = true;
                                 break;
                             }
 
                             case 1://注册失败
                             {
-                                regist_result = false;
 
+                                new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册失败，请重试！")
+                                        .setPositiveButton("确定",null).show();
                                 break;
                             }
 
@@ -67,40 +77,18 @@ public class RegistPage extends AppCompatActivity {
                                 break;
                         }
                     }
-                };*/
+                };
 
                 new HttpThread2(url,r_userID.getText().toString(),r_email.getText().toString(),r_password.getText().toString(),
                         r_realname.getText().toString(),r_phone.getText().toString(), r_carTravelCode.getText().toString(),
                         r_carNum.getText().toString(),handler).start();
 
-                /*if (regist_result)
+                if (flag)
                 {
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
-                            .setPositiveButton("确定",null).show();
                     Intent intent = new Intent(mContext,MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
-                else
-                {
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册失败，请重试！")
-                            .setPositiveButton("确定",null).show();
-                    Intent intent = new Intent(mContext,MainActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
-                }*/
-
-
-                //用Bundle携带数据
-                //Bundle bundle=new Bundle();
-
-                //传递name参数为tinyphp
-                //bundle.putString("regist_result", regist_result);
-                //intent.putExtras(bundle);
-
-                Intent intent = new Intent(mContext,MainActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
             }
         });
     }

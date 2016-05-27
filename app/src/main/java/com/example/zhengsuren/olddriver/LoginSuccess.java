@@ -23,7 +23,8 @@ public class LoginSuccess extends AppCompatActivity {
     private TextView tv1,tv2,tv3,tv4,tv5,tvm;
     private boolean flag = false;
     private ImageButton bt1,bt5,bt6;
-    private String adsUrl = "http://139.129.132.60/api/getad";
+    private String adsUrl = "http://139.129.132.60/api/getbytype";
+    private static String id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -53,9 +54,15 @@ public class LoginSuccess extends AppCompatActivity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
+        final String id = bundle.getString("id");
         final String url = bundle.getString("url");
         final String email = bundle.getString("email");
         final String pwd = bundle.getString("pwd");
+        final String types = bundle.getString("types");
+
+        this.id = id; //将局部变量的值传给静态全局变量
+
+        System.out.println("~~~~~~~~"+types);
 
         for (int i=1;i<6;i++)
         {
@@ -81,7 +88,7 @@ public class LoginSuccess extends AppCompatActivity {
                         }
                     }
                 };
-                new AdsThread(adsUrl,i,handler,mContext).start();
+                new AdsThread(adsUrl,id,handler,mContext).start();
             }
             if (2 == i)
             {
@@ -106,7 +113,7 @@ public class LoginSuccess extends AppCompatActivity {
                         }
                     }
                 };
-                new AdsThread(adsUrl,i,handler,mContext).start();
+                new AdsThread(adsUrl,"2",handler,mContext).start();
             }
             if (3 == i)
             {
@@ -131,7 +138,7 @@ public class LoginSuccess extends AppCompatActivity {
                         }
                     }
                 };
-                new AdsThread(adsUrl,i,handler,mContext).start();
+                new AdsThread(adsUrl,"3",handler,mContext).start();
             }
             if (4 == i)
             {
@@ -156,7 +163,7 @@ public class LoginSuccess extends AppCompatActivity {
                         }
                     }
                 };
-                new AdsThread(adsUrl,i,handler,mContext).start();
+                new AdsThread(adsUrl,"4",handler,mContext).start();
             }
             if (5 == i)
             {
@@ -181,7 +188,7 @@ public class LoginSuccess extends AppCompatActivity {
                         }
                     }
                 };
-                new AdsThread(adsUrl,i,handler,mContext).start();
+                new AdsThread(adsUrl,"5",handler,mContext).start();
             }
         }
 
@@ -256,7 +263,7 @@ public class LoginSuccess extends AppCompatActivity {
                     }
                 }
             };
-            new AdsThread(adsUrl,1,handler,mContext).start();
+            new AdsThread(adsUrl,id,handler,mContext).start();
         }
         else {
             mRL.setVisibility(View.GONE);
@@ -298,7 +305,7 @@ public class LoginSuccess extends AppCompatActivity {
                     }
                 }
             };
-            new AdsThread(adsUrl,2,handler,mContext).start();
+            new AdsThread(adsUrl,"2",handler,mContext).start();
         }
         else {
             mRL.setVisibility(View.GONE);
@@ -340,7 +347,7 @@ public class LoginSuccess extends AppCompatActivity {
                     }
                 }
             };
-            new AdsThread(adsUrl,3,handler,mContext).start();
+            new AdsThread(adsUrl,"3",handler,mContext).start();
         }
         else {
             mRL.setVisibility(View.GONE);
@@ -381,7 +388,7 @@ public class LoginSuccess extends AppCompatActivity {
                     }
                 }
             };
-            new AdsThread(adsUrl,4,handler,mContext).start();
+            new AdsThread(adsUrl,"4",handler,mContext).start();
         }
         else {
             mRL.setVisibility(View.GONE);
@@ -421,7 +428,7 @@ public class LoginSuccess extends AppCompatActivity {
                     }
                 }
             };
-            new AdsThread(adsUrl,5,handler,mContext).start();
+            new AdsThread(adsUrl,"5",handler,mContext).start();
         }
         else {
             mRL.setVisibility(View.GONE);
