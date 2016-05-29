@@ -24,7 +24,8 @@ import android.graphics.BitmapFactory;
         import com.amap.api.maps.model.Marker;
         import com.amap.api.maps.model.MarkerOptions;
         import com.amap.api.maps.overlay.PoiOverlay;
-        import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
         import com.amap.api.services.core.PoiItem;
         import com.amap.api.services.core.SuggestionCity;
         import com.amap.api.services.poisearch.PoiResult;
@@ -43,9 +44,14 @@ public class Map extends AppCompatActivity
     private PoiOverlay poiOverlay;// poi图层
     private List<PoiItem> poiItems;// poi数据
     private PoiItem mPoi;
-    private boolean hasThisType = false;
+    private static boolean[] hasThisType = {false,false,false,false,false,false,false,false};
     private String[] search = {"科教文化服务","医疗保健服务","购物服务","餐饮服务","汽车服务","风景名胜","公司企业","生活服务"} ;
     private static Types types;
+
+    private String adsUrl = "http://139.129.132.60/api/getbytype";
+    private static String id,url,email,pwd;
+    private static Context mContext;
+
 
     public AMapLocationClientOption mLocationOption = null;
     @Override
@@ -55,6 +61,15 @@ public class Map extends AppCompatActivity
         mMapView = (MapView) findViewById(R.id.map);
         AMapLocationClient mLocationClient = null;
         types = new Types();
+        url = adsUrl;
+
+        //新页面接收数据
+        Bundle bundle = this.getIntent().getExtras();
+
+        id = bundle.getString("id");
+        email = bundle.getString("email");
+        pwd = bundle.getString("pwd");
+        mContext = this;
 
 
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，实现地图生命周期管理
@@ -82,7 +97,6 @@ public class Map extends AppCompatActivity
         locationMarker.showInfoWindow();
         */
 
-
     }
     protected void doSearchQuery(String para){
         PoiSearch.Query query = new PoiSearch.Query("", para, "上海市");
@@ -94,9 +108,12 @@ public class Map extends AppCompatActivity
             poiSearch.setOnPoiSearchListener(this);
             poiSearch.setBound(new PoiSearch.SearchBound(lp, 1500, true));
             // 设置搜索区域为以lp点为圆心，其周围1500米范围
+
             poiSearch.searchPOIAsyn();// 异步搜索
+
         }
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -145,15 +162,10 @@ public class Map extends AppCompatActivity
                 {
                     //检查周边都有哪些服务，并更新结果字符串
                     doSearchQuery(search[count]);
-                    if (hasThisType)
-                    {
-                        types.setTypes(search[count]);
-                        break;
-                    }
                 }
-
-                String mtypes = types.getTypes();
-                System.out.println(mtypes);
+                //doSearchQuery("科教文化服务|医疗保健服务|购物服务|餐饮服务|汽车服务|风景名胜|公司企业|生活服务");
+                //String mtypes = types.getTypes();
+                //System.out.println(mtypes);
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"
@@ -184,7 +196,68 @@ public class Map extends AppCompatActivity
                 if(!result.getPois().toString().equals("[]")){
                     poiOverlay = new PoiOverlay(aMap, result.getPois());
                     poiOverlay.addToMap();
-                    hasThisType = true;
+                    String mresult = result.getQuery().toString();
+                    //不要问类型代码是怎么来的！！！
+                    if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@a4c8c639"))
+                    {
+                        hasThisType[0] = true;
+                        //System.out.println("这是科教类型～～～！！！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@4c35d00c"))
+                    {
+                        hasThisType[1] = true;
+                        //System.out.println("这是医疗保健服务～～～～！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@b6c64314"))
+                    {
+                        hasThisType[2] = true;
+                        //System.out.println("这是购物服务～～～～～～！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@86e9fdd2"))
+                    {
+                        hasThisType[3] = true;
+                        //System.out.println("这是餐饮类型～～～～～～！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@38276e07"))
+                    {
+                        hasThisType[4] = true;
+                        //System.out.println("这是汽车服务～～～～～！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@c96c8294"))
+                    {
+                        hasThisType[5] = true;
+                       // System.out.println("这是风景名胜类型～～～～～～～～！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@a76d023f"))
+                    {
+                        hasThisType[6] = true;
+                       // System.out.println("这是公司企业类型～～～～～～～！！！");
+                    }
+                    else if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@cd1a75f4"))
+                    {
+                        hasThisType[7] = true;
+                       // System.out.println("这是生活服务类～～～～！！！");
+                    }
+
+                    boolean first = true;
+
+                    for (int j = 0;j < 8;j++)
+                    {
+                        if (hasThisType[j] && first)
+                        {
+                            types.setTypes(search[j]);
+                            first = false;
+                        }
+                        else if (hasThisType[j])
+                        {
+                            types.addTypes(search[j]);
+                        }
+                    }
+
+                    System.out.println(types.getTypes());
+
+                    //根据周边环境，决定该用户应该播放哪些广告
+                    new AdsThread(url,id,null,mContext,types.getTypes()).start();
 
                     Log.i("Poi", result.getPois().toString());
                 }

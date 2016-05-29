@@ -19,24 +19,27 @@ import java.net.URL;
  * Created by zhengsuren on 16/4/27.
  */
 public class AdsThread extends Thread {
+
     //调用了获得广告的api，实现将服务器返回的广告信息解析，并将解析后的数据返回给主线程（LoginSuccess）
 
     private String url;
     private String id;
-    private Handler handler = new Handler();
+    private String types;
+    private Handler handler;
     private Context context;
 
-    public AdsThread(String url,String id,Handler handler,Context context)
+    public AdsThread(String url,String id,Handler handler,Context context,String types)
     {
         this.url = url;
         this.id = id;
         this.handler = handler;
         this.context = context;
+        this.types = types;
     }
 
     private AdsInfo request() {
         //获得广告
-        url = url + "?id=" + id ;
+        url = url + "?id=" + id + "&types=" + types;
         try {
             URL HttpURL = new URL(url);
 
@@ -133,7 +136,7 @@ public class AdsThread extends Thread {
     public void doGet() throws IOException
     {
          AdsInfo adsInfo = request();
-         if (adsInfo != null)
+         /*if (adsInfo != null)
          {
              //耗时操作，完成之后发送消息给Handler，完成UI更新；
              handler.sendEmptyMessage(0);
@@ -141,9 +144,7 @@ public class AdsThread extends Thread {
              Message msg =new Message();
              msg.obj = adsInfo;//可以是基本类型，可以是对象，可以是List、map等；
              handler.sendMessage(msg);
-
-
-         }
+         }*/
     }
 
     @Override

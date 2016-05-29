@@ -16,6 +16,6 @@ public class Types {
 
     public void addTypes(String types)
     {
-        this.types = this.types + types;
+        this.types = this.types + "|" + types;
     }
 }

@@ -12,13 +12,10 @@
             android:orientation="horizontal">
             <include layout="@layout/left_menu"/>
 
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:id="@+id/first">
                         <!--
                             这里的图片到时需要改为文字和数据库中的具体数字
@@ -26,184 +23,36 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="70dp"
                             android:src="@drawable/mainly"
-                            android:layout_centerHorizontal="true"/>
+                            android:layout_marginTop="89dp"
+                            android:layout_marginLeft="160dp"
+                            android:layout_below="@+id/imageButton"
+                            android:layout_centerHorizontal="true"
+                            android:id="@+id/imageView" />
                         <ImageButton
                             android:onClick="toggleMenu"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/menu_s"
-                            android:background="#ffffff"/>
-                    </RelativeLayout>
+                            android:background="#ffffff"
+                            android:id="@+id/imageButton" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_below="@+id/first"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/rl_ad1">
+                        <!--之后计算好的价钱可以通过改变该处text来显示 -->
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="167dp"
                             android:layout_height="wrap_content"
-                            android:id="@+id/ad_title1"
-                            android:text="@string/Advertisement"
-                            android:layout_centerVertical="true"
-                            android:textSize="20sp"
-                            android:textColor="#000000"/>
-                        <View
-                            android:layout_height="1px"
-                            android:layout_width="match_parent"
-                            android:background="#ff888888" />
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#ffffff"
-                            android:src="@drawable/down"
-                            android:onClick="showDetail1"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true" />
-                    </RelativeLayout>
-
-
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_below="@+id/rl_ad1"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/rl_ad2">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ad_title2"
-                            android:text="@string/Advertisement2"
-                            android:layout_centerVertical="true"
-                            android:textSize="20sp"
-                            android:textColor="#000000"/>
-                        <View
-                            android:layout_height="1px"
-                            android:layout_width="match_parent"
-                            android:background="#ff888888" />
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#ffffff"
-                            android:src="@drawable/down"
-                            android:onClick="showDetail2"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_below="@+id/rl_ad2"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/rl_ad3">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ad_title3"
-                            android:text="@string/Advertisement3"
-                            android:layout_centerVertical="true"
-                            android:textSize="20sp"
-                            android:textColor="#000000"/>
-                        <View
-                            android:layout_height="1px"
-                            android:layout_width="match_parent"
-                            android:background="#ff888888" />
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#ffffff"
-                            android:src="@drawable/down"
-                            android:onClick="showDetail3"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_below="@+id/rl_ad3"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/rl_ad4">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ad_title4"
-                            android:text="@string/Advertisement4"
-                            android:layout_centerVertical="true"
-                            android:textSize="20sp"
-                            android:textColor="#000000"/>
-                        <View
-                            android:layout_height="1px"
-                            android:layout_width="match_parent"
-                            android:background="#ff888888" />
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#ffffff"
-                            android:src="@drawable/down"
-                            android:onClick="showDetail4"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_below="@+id/rl_ad4"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"
-                        android:id="@+id/rl_ad5">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:id="@+id/ad_title5"
-                            android:text="@string/Advertisement5"
-                            android:layout_centerVertical="true"
-                            android:textSize="20sp"
-                            android:textColor="#000000"/>
-                        <View
-                            android:layout_height="1px"
-                            android:layout_width="match_parent"
-                            android:background="#ff888888" />
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="#ffffff"
-                            android:src="@drawable/down"
-                            android:onClick="showDetail5"
-                            android:layout_centerVertical="true"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="true" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="120dp"
-                        android:layout_below="@+id/first"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:id="@+id/RL"
-                        android:visibility="gone">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:id="@+id/ad_content"
+                            android:text="New Text"
+                            android:textSize="35sp"
                             android:textColor="#000000"
-                            android:text="@string/words2"
-                            android:textSize="20sp"/>
+                            android:background="#ffffff"
+                            android:visibility="visible"
+                            android:id="@+id/textView2"
+                            android:layout_alignBottom="@+id/imageView"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="90dp"/>
                     </RelativeLayout>
 
-                </RelativeLayout>
+
 
         </LinearLayout>
 
