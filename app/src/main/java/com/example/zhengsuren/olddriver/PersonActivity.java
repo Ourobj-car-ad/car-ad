@@ -23,7 +23,7 @@ public class PersonActivity extends AppCompatActivity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        final String url = bundle.getString("url");
+        final String url = "http://139.129.132.60/api/login";
         final String email = bundle.getString("email");
         final String pwd = bundle.getString("pwd");
 

@@ -42,7 +42,6 @@ public class LoginSuccess extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
 
         final String id = bundle.getString("id");
-        final String url = bundle.getString("url");
         final String email = bundle.getString("email");
         final String pwd = bundle.getString("pwd");
         String earnings = bundle.getString("earnings");
@@ -58,8 +57,6 @@ public class LoginSuccess extends AppCompatActivity {
 
                 //用Bundle携带数据
                 Bundle bundle=new Bundle();
-
-                bundle.putString("url", url);
                 bundle.putString("email",email);
                 bundle.putString("pwd",pwd);
                 intent.putExtras(bundle);
@@ -76,13 +73,15 @@ public class LoginSuccess extends AppCompatActivity {
                 Bundle bundle=new Bundle();
 
                 //传递name参数为tinyphp
-                bundle.putString("url", url);
                 bundle.putString("id",id);
                 bundle.putString("email",email);
                 bundle.putString("pwd", pwd);
                 intent.putExtras(bundle);
                 //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                 startActivity(intent);
             }

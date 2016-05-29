@@ -16,7 +16,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="37c4006091b814e8cee5f5be0d8c21d3" />
 
-        <activity android:name=".MainActivity" android:launchMode="singleTop">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

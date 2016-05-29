@@ -91,20 +91,22 @@ public class MainActivity extends AppCompatActivity {
                                     {
                                         if (data.getError() == 0)
                                         {
-                                            //check = true;
-                                            Intent intent = new Intent(mContext,LoginSuccess.class);
+                                            Intent intent = new Intent(mContext,Map.class);
                                             //用Bundle携带数据
                                             Bundle bundle=new Bundle();
 
                                             //传递name参数为tinyphp
-                                            bundle.putString("url", url);
                                             bundle.putString("id",data.getId());
                                             bundle.putString("email",username.getText().toString());
                                             bundle.putString("pwd", password.getText().toString());
                                             bundle.putString("earnings",data.getEarnings());
+                                            bundle.putInt("fromMain",1);
                                             intent.putExtras(bundle);
                                             //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+                                            intent.addCategory(Intent.CATEGORY_HOME);
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
                                             startActivity(intent);
                                             break;

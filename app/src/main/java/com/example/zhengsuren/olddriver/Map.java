@@ -71,6 +71,27 @@ public class Map extends AppCompatActivity
         pwd = bundle.getString("pwd");
         mContext = this;
 
+        if (bundle.getInt("fromMain") == 1)
+        {
+            String earnings = bundle.getString("earnings");
+            Intent intent = new Intent(mContext,LoginSuccess.class);
+            //用Bundle携带数据
+            Bundle bundle2=new Bundle();
+
+            //传递name参数为tinyphp
+            bundle2.putString("id",id);
+            bundle2.putString("email",email);
+            bundle2.putString("pwd", pwd);
+            bundle2.putString("earnings",earnings);
+            intent.putExtras(bundle);
+            //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+            startActivity(intent);
+        }
 
         //在activity执行onCreate时执行mMapView.onCreate(savedInstanceState)，实现地图生命周期管理
         mMapView.onCreate(savedInstanceState);
@@ -96,6 +117,8 @@ public class Map extends AppCompatActivity
                 .position(new LatLng(lp.getLatitude(), lp.getLongitude())));
         locationMarker.showInfoWindow();
         */
+
+
 
     }
     protected void doSearchQuery(String para){
