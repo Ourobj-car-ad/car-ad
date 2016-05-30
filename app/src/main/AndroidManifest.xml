@@ -29,7 +29,7 @@
         <activity android:name=".LoginSuccess" android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".RegistPage" android:launchMode="singleTop">
+        <activity android:name=".RegistPage">
 
 
         </activity>
@@ -37,11 +37,11 @@
 
         </activity>
 
-        <activity android:name=".Map" android:launchMode="singleTop">
+        <activity android:name=".Map" android:launchMode="singleInstance">
 
         </activity>
 
-        <activity android:name=".SettingActivity" android:launchMode="singleTop">
+        <activity android:name=".SettingActivity">
 
         </activity>
 

@@ -23,9 +23,9 @@ public class PersonActivity extends AppCompatActivity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        final String url = "http://139.129.132.60/api/login";
-        final String email = bundle.getString("email");
-        final String pwd = bundle.getString("pwd");
+        String url = "http://139.129.132.60/api/login";
+        String email = bundle.getString("email");
+        String pwd = bundle.getString("pwd");
 
         username = (TextView) findViewById(R.id.info_username);
         realname = (TextView) findViewById(R.id.info_realname);

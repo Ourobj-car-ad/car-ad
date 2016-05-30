@@ -22,7 +22,6 @@ public class LoginSuccess extends AppCompatActivity {
     private boolean flag = false;
     private TextView textView;
     private ImageButton bt1,bt5,bt6;
-    //private String adsUrl = "http://139.129.132.60/api/getbytype";
     private static String id;
 
     @Override
@@ -46,7 +45,7 @@ public class LoginSuccess extends AppCompatActivity {
         final String pwd = bundle.getString("pwd");
         String earnings = bundle.getString("earnings");
 
-        textView.setText("  "+earnings+" RMB");
+        textView.setText("  ¥ "+earnings);
 
         this.id = id; //将局部变量的值传给静态全局变量
 
@@ -56,12 +55,13 @@ public class LoginSuccess extends AppCompatActivity {
                 Intent intent = new Intent(mContext,PersonActivity.class);
 
                 //用Bundle携带数据
-                Bundle bundle=new Bundle();
-                bundle.putString("email",email);
-                bundle.putString("pwd",pwd);
-                intent.putExtras(bundle);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                Bundle bundle2=new Bundle();
+                bundle2.putString("email",email);
+                bundle2.putString("pwd",pwd);
+                intent.putExtras(bundle2);
+
+                //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
@@ -70,7 +70,7 @@ public class LoginSuccess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,Map.class);
-                Bundle bundle=new Bundle();
+               /* Bundle bundle=new Bundle();
 
                 //传递name参数为tinyphp
                 bundle.putString("id",id);
@@ -81,7 +81,7 @@ public class LoginSuccess extends AppCompatActivity {
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                 intent.addCategory(Intent.CATEGORY_HOME);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
 
                 startActivity(intent);
             }

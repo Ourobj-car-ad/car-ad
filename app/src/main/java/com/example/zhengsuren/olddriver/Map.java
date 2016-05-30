@@ -84,11 +84,11 @@ public class Map extends AppCompatActivity
             bundle2.putString("pwd", pwd);
             bundle2.putString("earnings",earnings);
             intent.putExtras(bundle);
-            //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             intent.addCategory(Intent.CATEGORY_HOME);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
             startActivity(intent);
         }
@@ -142,6 +142,7 @@ public class Map extends AppCompatActivity
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
+        finish();
     }
     @Override
     protected void onResume() {

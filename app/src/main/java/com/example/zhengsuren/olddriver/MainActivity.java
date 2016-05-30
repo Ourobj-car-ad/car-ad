@@ -105,9 +105,6 @@ public class MainActivity extends AppCompatActivity {
                                             //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
                                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
-                                            intent.addCategory(Intent.CATEGORY_HOME);
-                                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
                                             startActivity(intent);
                                             break;
                                         }
