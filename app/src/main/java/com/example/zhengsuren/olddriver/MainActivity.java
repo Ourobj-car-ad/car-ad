@@ -1,5 +1,6 @@
 package com.example.zhengsuren.olddriver;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.app.AlertDialog;
@@ -8,14 +9,13 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     private Button bt1;
     private TextView regist;
@@ -23,8 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
     private Handler handler = null;
-    private MyHandler handler_for_regist = null;
-    private MyApp mApp = null;
 
 
     @Override
@@ -38,36 +36,11 @@ public class MainActivity extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username);
         password = (EditText) findViewById(R.id.password);
         handler = new Handler();
-        mApp = (MyApp) this.getApplication();
-        handler_for_regist = new MyHandler();
-
-        if (isNetworkAvailable(MainActivity.this))
-        {
-            System.out.println("网络连接正常～～～～～～～！");
-        }
-        else
-        {
-            System.out.println("网络连接异常～！！！！！！！");
-            new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
-                        .setPositiveButton("确定",null).show();
-        }
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final String url = "http://139.129.132.60/api/login";
-
-                if (isNetworkAvailable(MainActivity.this))
-                {
-                    System.out.println("网络连接正常～～～～～～～！");
-                }
-                else
-                {
-                    System.out.println("网络连接异常～！！！！！！！");
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("网络连接异常，请检查你的网络配置！")
-                            .setPositiveButton("确定",null).show();
-                }
-
 
                 if ( (username.getText().toString()).isEmpty() || (password.getText().toString()).isEmpty())
                 {
@@ -148,71 +121,10 @@ public class MainActivity extends AppCompatActivity {
         regist.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                mApp.setHandler(handler_for_regist);
                 Intent intent = new Intent(mContext,RegistPage.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
-    }
-
-    public boolean isNetworkAvailable(AppCompatActivity activity)
-    {
-        Context context = activity.getApplicationContext();
-        // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
-        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-
-        if (connectivityManager == null)
-        {
-            return false;
-        }
-        else
-        {
-            // 获取NetworkInfo对象
-            NetworkInfo[] networkInfo = connectivityManager.getAllNetworkInfo();
-
-            if (networkInfo != null && networkInfo.length > 0)
-            {
-                for (int i = 0; i < networkInfo.length; i++)
-                {
-                    System.out.println(i + "===状态===" + networkInfo[i].getState());
-                    System.out.println(i + "===类型===" + networkInfo[i].getTypeName());
-                    // 判断当前网络状态是否为连接状态
-                    if (networkInfo[i].getState() == NetworkInfo.State.CONNECTED)
-                    {
-                        return true;
-                    }
-                }
-            }
-        }
-        return false;
-    }
-
-    final class MyHandler extends Handler
-    {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            switch (msg.what)
-            {
-                case 0:
-                {
-                    //注册成功
-                    new  AlertDialog.Builder(mContext).setTitle("提示").setMessage("注册成功！")
-                            .setPositiveButton("确定",null).show();
-                    break;
-                }
-
-                case 1:
-                {
-                    //注册失败
-
-                    break;
-                }
-
-                default:
-                    break;
-            }
-        }
     }
 }

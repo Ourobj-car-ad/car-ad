@@ -52,7 +52,6 @@ public class AdsThread extends Thread {
             while ((str = reader.readLine()) != null) {
                 sb.append(str);
             }
-            System.out.println("result:~~~ " + sb.toString());
 
             String result = sb.toString();
 
@@ -95,10 +94,10 @@ public class AdsThread extends Thread {
                 ads.setAds_times(ads_times);//计算10分钟内广告播放的次数
                 ads.setAdvertiser_id(advertiser_id);
 
-                System.out.println("the ads content is:~~~~~~~~" + content);
-                System.out.println("the ads lenth is:~~~~~~~~~~" + ads_lenth);
-                System.out.println("ads per time is:~~~~~~~~~" + ads.getAds_per_time());
-                System.out.println("ads play " + ads.getAds_times() + " times in 10min!");
+             //   System.out.println("the ads content is:~~~~~~~~" + content);
+             //   System.out.println("the ads lenth is:~~~~~~~~~~" + ads_lenth);
+             //   System.out.println("ads per time is:~~~~~~~~~" + ads.getAds_per_time());
+              //  System.out.println("ads play " + ads.getAds_times() + " times in 10min!");
 
                 return ads;
             }
@@ -122,7 +121,6 @@ public class AdsThread extends Thread {
             conn.setReadTimeout(5000);
             conn.setRequestMethod("GET");
 
-            System.out.println("数据回传成功～～～～～～～！！");
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -135,16 +133,7 @@ public class AdsThread extends Thread {
 
     public void doGet() throws IOException
     {
-         AdsInfo adsInfo = request();
-         /*if (adsInfo != null)
-         {
-             //耗时操作，完成之后发送消息给Handler，完成UI更新；
-             handler.sendEmptyMessage(0);
-             //需要数据传递，用下面方法；
-             Message msg =new Message();
-             msg.obj = adsInfo;//可以是基本类型，可以是对象，可以是List、map等；
-             handler.sendMessage(msg);
-         }*/
+         request();
     }
 
     @Override

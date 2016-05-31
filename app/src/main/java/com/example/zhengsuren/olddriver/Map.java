@@ -4,34 +4,34 @@ package com.example.zhengsuren.olddriver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-        import android.graphics.Color;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-        import com.amap.api.location.AMapLocation;
-        import com.amap.api.location.AMapLocationClient;
-        import com.amap.api.location.AMapLocationClientOption;
-        import com.amap.api.location.AMapLocationListener;
-        import com.amap.api.maps.AMap;
-        import com.amap.api.maps.CameraUpdateFactory;
-        import com.amap.api.maps.LocationSource;
-        import com.amap.api.maps.MapView;
-        import com.amap.api.maps.model.BitmapDescriptorFactory;
-        import com.amap.api.maps.model.CircleOptions;
-        import com.amap.api.maps.model.LatLng;
-        import com.amap.api.maps.model.Marker;
-        import com.amap.api.maps.model.MarkerOptions;
-        import com.amap.api.maps.overlay.PoiOverlay;
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
+import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
+import com.amap.api.maps.LocationSource;
+import com.amap.api.maps.MapView;
+import com.amap.api.maps.model.BitmapDescriptorFactory;
+import com.amap.api.maps.model.CircleOptions;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.Marker;
+import com.amap.api.maps.model.MarkerOptions;
+import com.amap.api.maps.overlay.PoiOverlay;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
-        import com.amap.api.services.core.PoiItem;
-        import com.amap.api.services.core.SuggestionCity;
-        import com.amap.api.services.poisearch.PoiResult;
-        import com.amap.api.services.poisearch.PoiSearch;
+import com.amap.api.services.core.PoiItem;
+import com.amap.api.services.core.SuggestionCity;
+import com.amap.api.services.poisearch.PoiResult;
+import com.amap.api.services.poisearch.PoiSearch;
 
-        import java.util.List;
+import java.util.List;
 
 public class Map extends AppCompatActivity
         implements LocationSource, AMapLocationListener, PoiSearch.OnPoiSearchListener
@@ -118,8 +118,6 @@ public class Map extends AppCompatActivity
         locationMarker.showInfoWindow();
         */
 
-
-
     }
     protected void doSearchQuery(String para){
         PoiSearch.Query query = new PoiSearch.Query("", para, "上海市");
@@ -161,6 +159,8 @@ public class Map extends AppCompatActivity
         super.onSaveInstanceState(outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，实现地图生命周期管理
         mMapView.onSaveInstanceState(outState);
+
+
     }
 
 
@@ -187,9 +187,6 @@ public class Map extends AppCompatActivity
                     //检查周边都有哪些服务，并更新结果字符串
                     doSearchQuery(search[count]);
                 }
-                //doSearchQuery("科教文化服务|医疗保健服务|购物服务|餐饮服务|汽车服务|风景名胜|公司企业|生活服务");
-                //String mtypes = types.getTypes();
-                //System.out.println(mtypes);
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"
@@ -221,6 +218,7 @@ public class Map extends AppCompatActivity
                     poiOverlay = new PoiOverlay(aMap, result.getPois());
                     poiOverlay.addToMap();
                     String mresult = result.getQuery().toString();
+
                     //不要问类型代码是怎么来的！！！
                     if (mresult.equals("com.amap.api.services.poisearch.PoiSearch$Query@a4c8c639"))
                     {
@@ -277,8 +275,6 @@ public class Map extends AppCompatActivity
                             types.addTypes(search[j]);
                         }
                     }
-
-                    System.out.println(types.getTypes());
 
                     //根据周边环境，决定该用户应该播放哪些广告
                     new AdsThread(url,id,null,mContext,types.getTypes()).start();

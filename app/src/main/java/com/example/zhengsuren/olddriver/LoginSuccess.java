@@ -1,5 +1,6 @@
 package com.example.zhengsuren.olddriver;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -15,14 +16,14 @@ import android.widget.TextView;
 /**
  * Created by zhengsuren on 16/4/5.
  */
-public class LoginSuccess extends AppCompatActivity {
+public class LoginSuccess extends Activity {
 
     public SlidingMenu mLeftMenu;
     private Context mContext;
     private boolean flag = false;
     private TextView textView;
     private ImageButton bt1,bt5,bt6;
-    private static String id;
+    private static String id,email,pwd;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,14 @@ public class LoginSuccess extends AppCompatActivity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        final String id = bundle.getString("id");
-        final String email = bundle.getString("email");
-        final String pwd = bundle.getString("pwd");
+        id = bundle.getString("id");
+        email = bundle.getString("email");
+        pwd = bundle.getString("pwd");
         String earnings = bundle.getString("earnings");
 
-        textView.setText("  ¥ "+earnings);
+        System.out.println("The user email is @@@~~!!!" + email);
 
-        this.id = id; //将局部变量的值传给静态全局变量
+        textView.setText("  ¥ "+earnings);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,18 +71,6 @@ public class LoginSuccess extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,Map.class);
-               /* Bundle bundle=new Bundle();
-
-                //传递name参数为tinyphp
-                bundle.putString("id",id);
-                bundle.putString("email",email);
-                bundle.putString("pwd", pwd);
-                intent.putExtras(bundle);
-                //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);*/
 
                 startActivity(intent);
             }
@@ -105,5 +94,17 @@ public class LoginSuccess extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         new LogoffThread(id).start();
+    }
+
+    //重写saveInstanceState方法，实现数据的临时保存
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putString("id",id);
+        outState.putString("email",email);
+        outState.putString("pwd",pwd);
+
+        System.out.println("The user email is @@@~~!!!" + email);
     }
 }

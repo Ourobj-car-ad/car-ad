@@ -1,19 +1,20 @@
 package com.example.zhengsuren.olddriver;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 /**
  * Created by zhengsuren on 16/4/26.
  */
-public class PersonActivity extends AppCompatActivity {
+public class PersonActivity extends Activity {
 
     private TextView username,realname,email1,phone,driverId,alipay,carnum;
     private Context context;
+    private static String email,pwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,8 +25,8 @@ public class PersonActivity extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
 
         String url = "http://139.129.132.60/api/login";
-        String email = bundle.getString("email");
-        String pwd = bundle.getString("pwd");
+        email = bundle.getString("email");
+        pwd = bundle.getString("pwd");
 
         username = (TextView) findViewById(R.id.info_username);
         realname = (TextView) findViewById(R.id.info_realname);
@@ -64,5 +65,12 @@ public class PersonActivity extends AppCompatActivity {
             }
         };
         new HttpThread(url, email, pwd, mHandler, context).start();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("email",email);
+        outState.putString("pwd",pwd);
     }
 }

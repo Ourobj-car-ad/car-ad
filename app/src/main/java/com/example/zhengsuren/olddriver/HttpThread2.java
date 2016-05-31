@@ -29,6 +29,8 @@ public class HttpThread2 extends Thread {
     private String carTravelCode;
     private String carNum;
     private Handler mHandler = new Handler();
+    private static boolean result = false;
+
 
 
     public HttpThread2(String url,String username,String email,String password,String realname,String phone,
@@ -44,7 +46,7 @@ public class HttpThread2 extends Thread {
         this.mHandler = handler;
     }
 
-    private boolean parseJson(String json){
+    private void parseJson(String json){
         //解析从服务器返回的用户数据
         try {
             JSONObject object = new JSONObject(json);
@@ -56,9 +58,10 @@ public class HttpThread2 extends Thread {
                 if (data.length() != 0)
                 {
                     String check_type = data.getString("type");
-                    if (check_type == "add")
+                    if (check_type.equals("add"))
                     {
-                        return true;
+                        result = true;
+                        return ;
                     }
                 }
             }
@@ -67,15 +70,13 @@ public class HttpThread2 extends Thread {
             e.printStackTrace();
         }
 
-        return false;
+        result = false;
     }
 
     public void doGet() throws IOException {
 
         url = url + "?name=" + username + "&pwd=" + password + "&email=" + email + "&realName=" + realname +
                 "&phone=" + phone + "&carTravelCode=" + carTravelCode + "&carCode=" + carNum + "&city=shanghai" + "&alipay=123";
-
-        boolean result = false;
 
         try {
             URL HttpURL = new URL(url);
@@ -91,31 +92,21 @@ public class HttpThread2 extends Thread {
                 sb.append(str);
             }
 
-            result = parseJson(sb.toString());
+            parseJson(sb.toString());
 
-            System.out.println("result:~~~ "+sb.toString() + " ---" + result);
+            if (!result)
+            {
+                //注册失败
+                mHandler.sendEmptyMessage(1);
+            }
+            else if (result)
+            {
+                //注册成功
+                mHandler.sendEmptyMessage(0);
+            }
 
         }catch (MalformedURLException e){
             e.printStackTrace();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
-        if (!result)
-        {
-            //注册失败
-            mHandler.sendEmptyMessage(1);
-            //需要数据传递，用下面方法；
-            Message msg = new Message();
-            mHandler.sendMessage(msg);
-        }
-        else if (result)
-        {
-            //注册成功
-            mHandler.sendEmptyMessage(0);
-            //需要数据传递，用下面方法；
-            Message msg = new Message();
-            mHandler.sendMessage(msg);
         }
     }
 

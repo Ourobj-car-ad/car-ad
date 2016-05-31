@@ -7,8 +7,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/logo"
         android:label="OldDriver"
-        android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:name=".MyApp">
+        android:theme="@style/Theme.AppCompat.NoActionBar">
         <service android:name="com.amap.api.location.APSService">
         </service>
 
@@ -29,7 +28,7 @@
         <activity android:name=".LoginSuccess" android:launchMode="singleTop">
 
         </activity>
-        <activity android:name=".RegistPage">
+        <activity android:name=".RegistPage" android:launchMode="singleTop">
 
 
         </activity>

@@ -52,7 +52,6 @@ public class HttpThread extends Thread {
             while ((str = reader.readLine()) != null) {
                 sb.append(str);
             }
-            System.out.println("result:~~~ " + sb.toString());
 
             final String result = sb.toString();
 
@@ -102,11 +101,9 @@ public class HttpThread extends Thread {
                     user.setDriverId(driverId);
                     user.setError(0);
 
-                    System.out.println("The username is : ~~~~~"+user.getUsername());
                     return user;
                 }
 
-                //exit = true;
                 return null;
             }
         }
@@ -128,8 +125,6 @@ public class HttpThread extends Thread {
             Message msg = new Message();
             msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
             mHandler.sendMessage(msg);
-            //使线程退出
-           // exit = true;
         }
         else
         {
