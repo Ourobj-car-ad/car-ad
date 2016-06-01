@@ -40,7 +40,6 @@ public class MainActivity extends Activity {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String url = "http://139.129.132.60/api/login";
 
                 if ( (username.getText().toString()).isEmpty() || (password.getText().toString()).isEmpty())
                 {
@@ -100,7 +99,7 @@ public class MainActivity extends Activity {
                         }
                     };
 
-                    HttpThread thread = new HttpThread(url,username.getText().toString(),
+                    HttpThread thread = new HttpThread(username.getText().toString(),
                                         password.getText().toString(), handler,mContext);
 
                     thread.start();

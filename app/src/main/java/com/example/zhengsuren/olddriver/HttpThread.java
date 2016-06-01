@@ -25,11 +25,10 @@ public class HttpThread extends Thread {
     private String url;
     private String username;
     private String password;
-    private Handler mHandler = new Handler();
+    private Handler mHandler;
     private Context context;
 
-    public HttpThread(String url,String username,String password,Handler handler,Context context){
-        this.url = url;
+    public HttpThread(String username,String password,Handler handler,Context context){
         this.username = username;
         this.password = password;
         this.mHandler = handler;
@@ -39,7 +38,7 @@ public class HttpThread extends Thread {
     private UserInfo request()
     {
         //拼接api的url地址并接收服务器返回的数据
-        url = url + "?email=" + username + "&pwd=" + password;
+        url = "http://139.129.132.60/api/login" + "?email=" + username + "&pwd=" + password;
         try {
             URL HttpURL = new URL(url);
 

@@ -14,6 +14,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by zhengsuren on 16/4/5.
@@ -41,7 +43,7 @@ public class LoginSuccess extends Activity {
         textView = (TextView) findViewById(R.id.textView2);
 
         //格式化处理读取到的收入，保留小数点后两位
-        DecimalFormat df = new DecimalFormat("#####0.00");
+        final DecimalFormat df = new DecimalFormat("#####0.00");
 
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
@@ -54,8 +56,39 @@ public class LoginSuccess extends Activity {
         System.out.println("The user email is @@@~~!!!" + email);
         System.out.println("Today income is:~~@@@ "+df.format(earnings));
 
+        //定时10s更新一次收入
+        final Handler handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what)
+                {
+                    case 0:
+                    {
+                        UserInfo data = (UserInfo) msg.obj;
+                        if (data != null)
+                        {
+                            Double earnings = data.getEarnings();
+                            textView.setText("  ¥ " + df.format(earnings));
+                        }
+                        break;
+                    }
 
-        textView.setText("  ¥ "+df.format(earnings));
+                    default:
+                        break;
+                }
+            }
+        };
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                new HttpThread(email,pwd,handler,mContext).start();
+            }
+        };
+
+        Timer timer = new Timer(true);
+        timer.schedule(task,0,10000);
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override

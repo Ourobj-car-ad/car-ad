@@ -24,7 +24,6 @@ public class PersonActivity extends Activity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        String url = "http://139.129.132.60/api/login";
         email = bundle.getString("email");
         pwd = bundle.getString("pwd");
 
@@ -64,7 +63,7 @@ public class PersonActivity extends Activity {
                 }
             }
         };
-        new HttpThread(url, email, pwd, mHandler, context).start();
+        new HttpThread(email, pwd, mHandler, context).start();
     }
 
     @Override

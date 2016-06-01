@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="23.0.2"
-        sha1="63e427b71f9a19ab8afbc2364963ea83afaf4750">
-        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cfff0a65a728281c17a62529417185e9750b4b0f.jar" />
-    </item>
-
-</items>
+<items version="2" />
