@@ -87,7 +87,7 @@ public class HttpThread extends Thread {
                     String realname = data.getString("real_name");
                     String alipay = data.getString("alipay");
                     String carnum = data.getString("car_code");
-                    String earnings = data.getString("earnings");
+                    Double earnings = data.getDouble("earnings");
 
                     user.setId(id);
                     user.setAlipay(alipay);

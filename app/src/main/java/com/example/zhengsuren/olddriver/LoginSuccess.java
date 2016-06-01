@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 /**
  * Created by zhengsuren on 16/4/5.
  */
@@ -38,17 +40,22 @@ public class LoginSuccess extends Activity {
         bt6 = (ImageButton) findViewById(R.id.id_img6);
         textView = (TextView) findViewById(R.id.textView2);
 
+        //格式化处理读取到的收入，保留小数点后两位
+        DecimalFormat df = new DecimalFormat("#####0.00");
+
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
         id = bundle.getString("id");
         email = bundle.getString("email");
         pwd = bundle.getString("pwd");
-        String earnings = bundle.getString("earnings");
+        Double earnings = bundle.getDouble("earnings");
 
         System.out.println("The user email is @@@~~!!!" + email);
+        System.out.println("Today income is:~~@@@ "+df.format(earnings));
 
-        textView.setText("  ¥ "+earnings);
+
+        textView.setText("  ¥ "+df.format(earnings));
 
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +101,7 @@ public class LoginSuccess extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         new LogoffThread(id).start();
+        this.finish();
     }
 
     //重写saveInstanceState方法，实现数据的临时保存

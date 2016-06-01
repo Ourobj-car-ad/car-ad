@@ -73,7 +73,7 @@ public class Map extends AppCompatActivity
 
         if (bundle.getInt("fromMain") == 1)
         {
-            String earnings = bundle.getString("earnings");
+            Double earnings = bundle.getDouble("earnings");
             Intent intent = new Intent(mContext,LoginSuccess.class);
             //用Bundle携带数据
             Bundle bundle2=new Bundle();
@@ -82,11 +82,11 @@ public class Map extends AppCompatActivity
             bundle2.putString("id",id);
             bundle2.putString("email",email);
             bundle2.putString("pwd", pwd);
-            bundle2.putString("earnings",earnings);
+            bundle2.putDouble("earnings",earnings);
             intent.putExtras(bundle);
 
             intent.addCategory(Intent.CATEGORY_HOME);
-            //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
@@ -140,7 +140,7 @@ public class Map extends AppCompatActivity
         super.onDestroy();
         //在activity执行onDestroy时执行mMapView.onDestroy()，实现地图生命周期管理
         mMapView.onDestroy();
-        finish();
+        System.out.println("Map的activity已经删除了！！！");
     }
     @Override
     protected void onResume() {
@@ -159,8 +159,6 @@ public class Map extends AppCompatActivity
         super.onSaveInstanceState(outState);
         //在activity执行onSaveInstanceState时执行mMapView.onSaveInstanceState (outState)，实现地图生命周期管理
         mMapView.onSaveInstanceState(outState);
-
-
     }
 
 

@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
                                             bundle.putString("id",data.getId());
                                             bundle.putString("email",username.getText().toString());
                                             bundle.putString("pwd", password.getText().toString());
-                                            bundle.putString("earnings",data.getEarnings());
+                                            bundle.putDouble("earnings",data.getEarnings());
                                             bundle.putInt("fromMain",1);
                                             intent.putExtras(bundle);
                                             //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱

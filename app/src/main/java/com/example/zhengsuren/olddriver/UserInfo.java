@@ -4,11 +4,20 @@ package com.example.zhengsuren.olddriver;
  * Created by zhengsuren on 16/4/26.
  */
 public class UserInfo {
-    private String id,username,realname,email,phone,driverId,alipay,carnum,earnings,cartranum;
+    private String id,username,realname,email,phone,driverId,alipay,carnum,cartranum;
+    private Double earnings;
     private int error = 1;
 
     public int getError() {
         return error;
+    }
+
+    public Double getEarnings() {
+        return earnings;
+    }
+
+    public void setEarnings(Double earnings) {
+        this.earnings = earnings;
     }
 
     public void setError(int error) {
@@ -29,9 +38,7 @@ public class UserInfo {
 
     }
 
-    public String getEarnings() {
-        return earnings;
-    }
+
 
     public String getUsername() {
         return username;
@@ -49,9 +56,6 @@ public class UserInfo {
         this.driverId = driverId;
     }
 
-    public void setEarnings(String earnings) {
-        this.earnings = earnings;
-    }
 
     public void setRealname(String realname) {
         this.realname = realname;
