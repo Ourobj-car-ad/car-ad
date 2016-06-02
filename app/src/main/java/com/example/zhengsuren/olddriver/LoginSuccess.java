@@ -111,7 +111,12 @@ public class LoginSuccess extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mContext,Map.class);
-
+                Bundle bundle2=new Bundle();
+                bundle2.putString("email",email);
+                bundle2.putString("pwd",pwd);
+                intent.putExtras(bundle2);
+                //设定flag不让页面数据反复传递，防止用户退出重进时的数据混乱
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });

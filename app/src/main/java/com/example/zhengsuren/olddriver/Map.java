@@ -1,6 +1,7 @@
 package com.example.zhengsuren.olddriver;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -33,7 +34,7 @@ import com.amap.api.services.poisearch.PoiSearch;
 
 import java.util.List;
 
-public class Map extends AppCompatActivity
+public class Map extends Activity
         implements LocationSource, AMapLocationListener, PoiSearch.OnPoiSearchListener
 {
     private Marker locationMarker; // 选择的点
@@ -66,13 +67,13 @@ public class Map extends AppCompatActivity
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        id = bundle.getString("id");
-        email = bundle.getString("email");
-        pwd = bundle.getString("pwd");
         mContext = this;
 
         if (bundle.getInt("fromMain") == 1)
         {
+            id = bundle.getString("id");
+            email = bundle.getString("email");
+            pwd = bundle.getString("pwd");
             Double earnings = bundle.getDouble("earnings");
             Intent intent = new Intent(mContext,LoginSuccess.class);
             //用Bundle携带数据
