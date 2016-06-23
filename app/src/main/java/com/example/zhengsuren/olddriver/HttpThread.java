@@ -51,7 +51,6 @@ public class HttpThread extends Thread {
             while ((str = reader.readLine()) != null) {
                 sb.append(str);
             }
-
             final String result = sb.toString();
 
             return parseJson(result);
@@ -113,7 +112,7 @@ public class HttpThread extends Thread {
         return null;
     }
 
-    public void doGet() throws IOException {
+    public double doGet() throws IOException {
         UserInfo mUserInfo = request();
 
         if (mUserInfo == null)
@@ -124,6 +123,7 @@ public class HttpThread extends Thread {
             Message msg = new Message();
             msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
             mHandler.sendMessage(msg);
+            return 1;
         }
         else
         {
@@ -133,6 +133,7 @@ public class HttpThread extends Thread {
             Message msg = new Message();
             msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
             mHandler.sendMessage(msg);
+            return 0;
         }
     }
 
