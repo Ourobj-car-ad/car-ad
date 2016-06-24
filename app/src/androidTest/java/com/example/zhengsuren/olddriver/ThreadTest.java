@@ -66,7 +66,7 @@ public class ThreadTest extends InstrumentationTestCase {
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String test = "test002";
+        String test = "test003";
 
         RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", test, test, test, test, test, test, test,
                 handler, new RegistThread.onResponseListener() {
