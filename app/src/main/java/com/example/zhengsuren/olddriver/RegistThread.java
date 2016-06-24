@@ -13,12 +13,13 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 
 /**
  * Created by zhengsuren on 16/4/13.
  */
-public class HttpThread2 extends Thread {
+public class RegistThread extends Thread {
 
     private String url;
     private String username;
@@ -29,12 +30,13 @@ public class HttpThread2 extends Thread {
     private String carTravelCode;
     private String carNum;
     private Handler mHandler = new Handler();
+    private onResponseListener listener;
     private static boolean result = false;
 
 
 
-    public HttpThread2(String url,String username,String email,String password,String realname,String phone,
-                       String carTravelCode,String carNum,Handler handler){
+    public RegistThread(String url, String username, String email, String password, String realname, String phone,
+                        String carTravelCode, String carNum, Handler handler,onResponseListener listener){
         this.url = url;
         this.username = username;
         this.password = password;
@@ -44,37 +46,11 @@ public class HttpThread2 extends Thread {
         this.carTravelCode = carTravelCode;
         this.carNum = carNum;
         this.mHandler = handler;
+        this.listener = listener;
     }
 
-    private void parseJson(String json){
-        //解析从服务器返回的用户数据
-        try {
-            JSONObject object = new JSONObject(json);
-            int errno = object.getInt("errno");
-            String errmsg = object.getString("errmsg");
-            if (0 == errno && errmsg.isEmpty())
-            {
-                JSONObject data = object.getJSONObject("data");
-                if (data.length() != 0)
-                {
-                    String check_type = data.getString("type");
-                    if (check_type.equals("add"))
-                    {
-                        result = true;
-                        return ;
-                    }
-                }
-            }
-        }
-        catch (JSONException e){
-            e.printStackTrace();
-        }
-
-        result = false;
-    }
-
-    public void doGet() throws IOException {
-
+    private void request()
+    {
         url = url + "?name=" + username + "&pwd=" + password + "&email=" + email + "&realName=" + realname +
                 "&phone=" + phone + "&carTravelCode=" + carTravelCode + "&carCode=" + carNum + "&city=shanghai" + "&alipay=123";
 
@@ -92,7 +68,7 @@ public class HttpThread2 extends Thread {
                 sb.append(str);
             }
 
-            parseJson(sb.toString());
+            parseJson(sb.toString(),listener);
 
             if (!result)
             {
@@ -107,15 +83,58 @@ public class HttpThread2 extends Thread {
 
         }catch (MalformedURLException e){
             e.printStackTrace();
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        listener.onfailure("can not access to the server");
+    }
+
+    private void parseJson(String json,onResponseListener listener){
+        //解析从服务器返回的用户数据
+        try {
+            JSONObject object = new JSONObject(json);
+            int errno = object.getInt("errno");
+            String errmsg = object.getString("errmsg");
+            if (0 == errno && errmsg.isEmpty())
+            {
+                JSONObject data = object.getJSONObject("data");
+                if (data.length() != 0)
+                {
+                    String check_type = data.getString("type");
+                    if (check_type.equals("add"))
+                    {
+                        result = true;
+                        listener.onSuccess();
+                        return ;
+                    }
+                }
+
+                listener.onfailure("the email already exist");
+            }
+        }
+        catch (JSONException e){
+            e.printStackTrace();
+        }
+
+        result = false;
+    }
+
+    public void doGet(){
+        request();
     }
 
     @Override
     public void run() {
-        try {
-            doGet();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        doGet();
+    }
+
+    public interface onResponseListener
+    {
+        void onSuccess();
+
+        void onfailure(String reason);
     }
 }

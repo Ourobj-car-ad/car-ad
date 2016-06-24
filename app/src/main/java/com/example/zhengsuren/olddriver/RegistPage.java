@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -74,9 +73,19 @@ public class RegistPage extends Activity {
                     }
                 };
 
-                new HttpThread2(url,r_userID.getText().toString(),r_email.getText().toString(),r_password.getText().toString(),
-                        r_realname.getText().toString(),r_phone.getText().toString(), r_carTravelCode.getText().toString(),
-                        r_carNum.getText().toString(),handler).start();
+                new RegistThread(url, r_userID.getText().toString(), r_email.getText().toString(), r_password.getText().toString(),
+                        r_realname.getText().toString(), r_phone.getText().toString(), r_carTravelCode.getText().toString(),
+                        r_carNum.getText().toString(), handler, new RegistThread.onResponseListener() {
+
+                    @Override
+                    public void onSuccess() {
+
+                    }
+                    @Override
+                    public void onfailure(String reason) {
+
+                    }
+                }).start();
 
             }
         });

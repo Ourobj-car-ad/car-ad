@@ -117,7 +117,6 @@ public class LoginThread extends Thread {
             e.printStackTrace();
         }
 
-        //listener.onfailure("username or password error");
         return null;
     }
 
