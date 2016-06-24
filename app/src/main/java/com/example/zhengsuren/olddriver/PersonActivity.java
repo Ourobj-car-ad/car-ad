@@ -7,6 +7,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.widget.TextView;
 
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+
 /**
  * Created by zhengsuren on 16/4/26.
  */

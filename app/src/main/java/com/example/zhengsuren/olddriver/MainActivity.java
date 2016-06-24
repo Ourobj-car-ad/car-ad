@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+
 public class MainActivity extends Activity {
 
     private Button bt1;

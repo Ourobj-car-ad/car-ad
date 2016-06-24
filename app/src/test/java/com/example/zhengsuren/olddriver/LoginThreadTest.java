@@ -2,12 +2,10 @@ package com.example.zhengsuren.olddriver;
 
 import android.os.Handler;
 
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
 

@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+
 import java.text.DecimalFormat;
 import java.util.Timer;
 import java.util.TimerTask;

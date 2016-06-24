@@ -1,8 +1,10 @@
-package com.example.zhengsuren.olddriver;
+package com.example.zhengsuren.olddriver.Network;
 
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+
+import com.example.zhengsuren.olddriver.AdsInfo;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -25,16 +27,14 @@ public class AdsThread extends Thread {
     private String url;
     private String id;
     private String types;
-    private Handler handler;
-    private Context context;
+    private onResponseListener listener;
 
-    public AdsThread(String url,String id,Handler handler,Context context,String types)
+    public AdsThread(String url,String id,String types,onResponseListener listener)
     {
         this.url = url;
         this.id = id;
-        this.handler = handler;
-        this.context = context;
         this.types = types;
+        this.listener = listener;
     }
 
     private AdsInfo request() {
@@ -65,6 +65,8 @@ public class AdsThread extends Thread {
             e.printStackTrace();
         }
 
+        listener.onfailure("can not access to the server!");
+
         return null;
     }
 
@@ -78,57 +80,36 @@ public class AdsThread extends Thread {
             if (0 == errno && errmsg.isEmpty())
             {
                 JSONObject data = object.getJSONObject("data");
-                AdsInfo ads = new AdsInfo();
-                String id = data.getString("id");
-                String update_time = data.getString("title");
-                String content = data.getString("content");
-                String advertiser_id = data.getString("advertiser_id");
-                int ads_lenth = content.length();
-                double ads_per_time = ads_lenth/10.0;
-                int ads_times = (int) (600/ads_per_time);
+                if (data.length() != 0)
+                {
+                    AdsInfo ads = new AdsInfo();
+                    String id = data.getString("id");
+                    String update_time = data.getString("title");
+                    String content = data.getString("content");
+                    String advertiser_id = data.getString("advertiser_id");
+                    int ads_lenth = content.length();
+                    double ads_per_time = ads_lenth/10.0;
+                    int ads_times = (int) (600/ads_per_time);
 
-                ads.setContent(content);
-                ads.setId(id);
-                ads.setUpdate_time(update_time);
-                ads.setAds_per_time(ads_per_time);//以显示屏可以一次显示10个字符为标准，每播放10个字符需要1秒
-                ads.setAds_times(ads_times);//计算10分钟内广告播放的次数
-                ads.setAdvertiser_id(advertiser_id);
+                    ads.setContent(content);
+                    ads.setId(id);
+                    ads.setUpdate_time(update_time);
+                    ads.setAds_per_time(ads_per_time);//以显示屏可以一次显示10个字符为标准，每播放10个字符需要1秒
+                    ads.setAds_times(ads_times);//计算10分钟内广告播放的次数
+                    ads.setAdvertiser_id(advertiser_id);
 
-             //   System.out.println("the ads content is:~~~~~~~~" + content);
-             //   System.out.println("the ads lenth is:~~~~~~~~~~" + ads_lenth);
-             //   System.out.println("ads per time is:~~~~~~~~~" + ads.getAds_per_time());
-              //  System.out.println("ads play " + ads.getAds_times() + " times in 10min!");
+                    listener.onSuccess();
+                    return ads;
+                }
 
-                return ads;
+                listener.onfailure("data format error");
+                return null;
             }
         }
         catch (JSONException e) {
             e.printStackTrace();
         }
-
         return null;
-    }
-
-    private void callBack(String adId,String advertiserId,String userId)
-    {
-        String url = "http://139.129.132.60/api/addorder?price=5000&regionInfo=test" + "&adId=" + adId +
-                "&advertiserId=" + advertiserId + "&userId=" + userId;
-
-        try {
-            URL HttpURL = new URL(url);
-
-            HttpURLConnection conn = (HttpURLConnection) HttpURL.openConnection();
-            conn.setReadTimeout(5000);
-            conn.setRequestMethod("GET");
-
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (ProtocolException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     public void doGet() throws IOException
@@ -143,5 +124,12 @@ public class AdsThread extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public interface onResponseListener
+    {
+        void onSuccess();
+
+        void onfailure(String reason);
     }
 }

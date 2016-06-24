@@ -4,12 +4,9 @@ package com.example.zhengsuren.olddriver;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -19,18 +16,15 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.LocationSource;
 import com.amap.api.maps.MapView;
-import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
-import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.overlay.PoiOverlay;
-import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
-import com.amap.api.services.core.SuggestionCity;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
+import com.example.zhengsuren.olddriver.Network.AdsThread;
 
 import java.util.List;
 
@@ -276,7 +270,17 @@ public class Map extends Activity
                     }
 
                     //根据周边环境，决定该用户应该播放哪些广告
-                    new AdsThread(url,id,null,mContext,types.getTypes()).start();
+                    new AdsThread(url, id, types.getTypes(), new AdsThread.onResponseListener() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onfailure(String reason) {
+
+                        }
+                    }).start();
 
                     Log.i("Poi", result.getPois().toString());
                 }

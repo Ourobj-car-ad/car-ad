@@ -3,13 +3,15 @@ package com.example.zhengsuren.olddriver;
 /**
  * Created by zhengsuren on 16/6/24.
  */
-import java.util.concurrent.CountDownLatch;
 
-import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Looper;
 import android.test.InstrumentationTestCase;
 import android.util.Log;
+
+import com.example.zhengsuren.olddriver.Network.AdsThread;
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+import com.example.zhengsuren.olddriver.Network.RegistThread;
 
 import static org.junit.Assert.fail;
 
@@ -24,7 +26,7 @@ public class ThreadTest extends InstrumentationTestCase {
     }
 
     // 异步test
-   /* public void testLoginThread() throws Throwable{
+    public void testLoginThread() throws Throwable{
         // create  a signal to let us know when our task is done.
         Looper.prepare();
         Handler handler = new Handler();
@@ -56,11 +58,10 @@ public class ThreadTest extends InstrumentationTestCase {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 
     public void testRegistThread() throws Throwable{
         // create  a signal to let us know when our task is done.
-        Looper.prepare();
         Handler handler = new Handler();
 
         //final CountDownLatch signal = new CountDownLatch(1);
@@ -89,5 +90,36 @@ public class ThreadTest extends InstrumentationTestCase {
             e.printStackTrace();
         }
     }
+
+    public void testAdsThread() throws Throwable{
+        // create  a signal to let us know when our task is done.
+
+
+        //final CountDownLatch signal = new CountDownLatch(1);
+
+        String test = "abc";
+
+        AdsThread adsThread = new AdsThread("http://139.129.132.60/api/getbytype",test,"ha",new AdsThread.onResponseListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onfailure(String reason) {
+                Log.i("reason",reason);
+                fail(reason);
+            }
+        });
+
+        adsThread.start();
+
+        try {
+            adsThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
