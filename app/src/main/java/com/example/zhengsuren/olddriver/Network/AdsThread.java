@@ -1,9 +1,5 @@
 package com.example.zhengsuren.olddriver.Network;
 
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-
 import com.example.zhengsuren.olddriver.AdsInfo;
 
 import org.json.JSONException;

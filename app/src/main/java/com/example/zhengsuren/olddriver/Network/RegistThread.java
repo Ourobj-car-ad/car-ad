@@ -1,9 +1,6 @@
 package com.example.zhengsuren.olddriver.Network;
 
-import android.app.AlertDialog;
-import android.content.Context;
 import android.os.Handler;
-import android.os.Message;
 
 import org.json.JSONException;
 import org.json.JSONObject;

@@ -1,9 +1,7 @@
 package com.example.zhengsuren.olddriver.Network;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
 
 import com.example.zhengsuren.olddriver.UserInfo;
