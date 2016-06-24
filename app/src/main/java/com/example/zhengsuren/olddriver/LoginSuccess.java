@@ -151,7 +151,6 @@ public class LoginSuccess extends Activity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        new LogoffThread(id).start();
         this.finish();
     }
 
