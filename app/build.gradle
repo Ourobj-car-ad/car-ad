@@ -2,10 +2,11 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.2"
+    buildToolsVersion "24.0.0"
 
     defaultConfig {
         applicationId "com.example.zhengsuren.olddriver"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -29,6 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     testCompile "org.mockito:mockito-core:1.9.5"
     testCompile 'org.json:json:20160212'
-    compile 'com.android.support:appcompat-v7:23.2.1'
+    compile 'com.android.support:appcompat-v7:23.1.1'
     compile files('libs/AMap3DMap_3.3.1_AMapSearch_3.2.1_AMapLocation_2.4.1_20160425.jar')
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
 }

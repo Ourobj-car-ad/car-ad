@@ -3,6 +3,7 @@ package com.example.zhengsuren.olddriver;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 
 import org.json.JSONException;
@@ -132,7 +133,7 @@ public class LoginThread extends Thread {
             Message msg = new Message();
             msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
             mHandler.sendMessage(msg);
-            //listener.onExcute();
+            listener.onExcute();
             return 1;
         }
         else
@@ -143,21 +144,17 @@ public class LoginThread extends Thread {
             Message msg = new Message();
             msg.obj = mUserInfo;//可以是基本类型，可以是对象，可以是List、map等；
             mHandler.sendMessage(msg);
-            //listener.onExcute();
+            listener.onExcute();
             return 0;
         }
 
 
     }
 
-   /* @Override
+    @Override
     public void run() {
-        try {
-            doGet();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }*/
+       doGet();
+    }
 
     public interface onResponseListener
     {
