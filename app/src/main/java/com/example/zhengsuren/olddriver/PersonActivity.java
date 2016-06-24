@@ -63,7 +63,23 @@ public class PersonActivity extends Activity {
                 }
             }
         };
-        new HttpThread(email, pwd, mHandler, context).start();
+        //new LoginThread(email, pwd, mHandler, context).start();
+        new LoginThread(email, pwd, mHandler, new LoginThread.onResponseListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onfailure(String reason) {
+
+            }
+
+            @Override
+            public void onExcute() {
+
+            }
+        }).start();
     }
 
     @Override

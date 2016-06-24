@@ -1,16 +1,13 @@
 package com.example.zhengsuren.olddriver;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -83,7 +80,23 @@ public class LoginSuccess extends Activity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-                new HttpThread(email,pwd,handler,mContext).start();
+               // new LoginThread(email,pwd,handler,mContext).start();
+                new LoginThread(email, pwd, handler, new LoginThread.onResponseListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+
+                    @Override
+                    public void onfailure(String reason) {
+
+                    }
+
+                    @Override
+                    public void onExcute() {
+
+                    }
+                }).start();
             }
         };
 

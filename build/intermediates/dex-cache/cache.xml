@@ -12,14 +12,14 @@
         jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="988865c87e572bc3ce986830ddb07f3fe2bc0b7b">
+        sha1="142711d0bba4b0a45b2fb5590b6f7330b4c17589">
         <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/instant-run_3a511efcd79e3eeef80653c020456f85a2a9f502.jar" />
     </item>
     <item
         jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="23.0.2"
-        sha1="7f3e2b1da10459e2d8820dd2e47e3187ac0b073a">
+        sha1="cb217affcb7f744c40abe8ec0e98d93de4d8c094">
         <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cfff0a65a728281c17a62529417185e9750b4b0f.jar" />
     </item>
     <item

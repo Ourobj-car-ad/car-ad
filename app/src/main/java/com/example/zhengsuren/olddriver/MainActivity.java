@@ -4,9 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.app.AlertDialog;
-import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Handler;
 import android.os.Message;
 import android.os.Bundle;
@@ -68,7 +65,7 @@ public class MainActivity extends Activity {
                                             Bundle bundle=new Bundle();
 
                                             //传递name参数为tinyphp
-                                            bundle.putString("id",data.getId());
+                                            bundle.putInt("id",data.getId());
                                             bundle.putString("email",username.getText().toString());
                                             bundle.putString("pwd", password.getText().toString());
                                             bundle.putDouble("earnings",data.getEarnings());
@@ -99,9 +96,26 @@ public class MainActivity extends Activity {
                         }
                     };
 
-                    HttpThread thread = new HttpThread(username.getText().toString(),
-                                        password.getText().toString(), handler,mContext);
+                    //LoginThread thread = new LoginThread(username.getText().toString(),
+                    //                    password.getText().toString(), handler,mContext);
 
+                    LoginThread thread = new LoginThread(username.getText().toString(),
+                            password.getText().toString(), handler, new LoginThread.onResponseListener() {
+                        @Override
+                        public void onSuccess() {
+
+                        }
+
+                        @Override
+                        public void onfailure(String reason) {
+
+                        }
+
+                        @Override
+                        public void onExcute() {
+
+                        }
+                    });
                     thread.start();
 
                     //public StackTraceElement[] getStackTrace()
