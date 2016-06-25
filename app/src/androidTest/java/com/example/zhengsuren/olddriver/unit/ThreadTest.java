@@ -82,13 +82,13 @@ public class ThreadTest extends InstrumentationTestCase {
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String username = "127";
-        String password = "127";
-        String email = "60003@qq.com";
-        String realname = "127";
-        String phone = null;
-        String carTravalCode = "000004";
-        String carNum = "000004";
+        String username = "130";
+        String password = "130";
+        String email = "abc@qq.com";
+        String realname = "130";
+        String phone = "13568682718";
+        String carTravalCode = "000007";
+        String carNum = "000007";
 
 
         RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", username, email, password,

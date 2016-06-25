@@ -71,6 +71,7 @@ public class RegistThread extends Thread {
             {
                 //注册失败
                 mHandler.sendEmptyMessage(1);
+                listener.onfailure("email is exist");
             }
             else if (result)
             {
