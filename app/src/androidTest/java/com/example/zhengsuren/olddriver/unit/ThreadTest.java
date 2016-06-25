@@ -46,7 +46,7 @@ public class ThreadTest extends InstrumentationTestCase {
         Handler handler = new Handler();
 
         //final CountDownLatch signal = new CountDownLatch(1);
-        String username = "abc@qq.com";
+        String username = "\"abc@qq.com\"";
         String password = "123456ww";
 
         LoginThread loginThread = new LoginThread( username, password, handler, new LoginThread.onResponseListener() {
@@ -82,13 +82,13 @@ public class ThreadTest extends InstrumentationTestCase {
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String username = "125";
-        String password = "125";
-        String email = null;
-        String realname = "125";
-        String phone = "13568682713";
-        String carTravalCode = "000002";
-        String carNum = "000002";
+        String username = "126";
+        String password = "126";
+        String email = "60002@qq.com";
+        String realname = null;
+        String phone = "13568682714";
+        String carTravalCode = "000003";
+        String carNum = "000003";
 
 
         RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", username, email, password,
