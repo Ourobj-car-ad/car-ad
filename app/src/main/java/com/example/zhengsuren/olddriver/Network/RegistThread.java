@@ -76,6 +76,7 @@ public class RegistThread extends Thread {
             {
                 //注册成功
                 mHandler.sendEmptyMessage(0);
+                return;
             }
 
         }catch (MalformedURLException e){

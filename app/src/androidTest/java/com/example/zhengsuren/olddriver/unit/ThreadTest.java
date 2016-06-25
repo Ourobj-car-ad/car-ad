@@ -13,6 +13,18 @@ import com.example.zhengsuren.olddriver.Network.AdsThread;
 import com.example.zhengsuren.olddriver.Network.LoginThread;
 import com.example.zhengsuren.olddriver.Network.RegistThread;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
+
+import jxl.Cell;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
 import static org.junit.Assert.fail;
 
 public class ThreadTest extends InstrumentationTestCase {
@@ -32,8 +44,10 @@ public class ThreadTest extends InstrumentationTestCase {
         Handler handler = new Handler();
 
         //final CountDownLatch signal = new CountDownLatch(1);
+        String username = "";
+        String password = "123456";
 
-        LoginThread loginThread = new LoginThread("abc@qq.com", "123456", handler, new LoginThread.onResponseListener() {
+        LoginThread loginThread = new LoginThread( username, password, handler, new LoginThread.onResponseListener() {
             @Override
             public void onSuccess() {
 
@@ -66,10 +80,17 @@ public class ThreadTest extends InstrumentationTestCase {
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String test = "test003";
+        String username = "";
+        String password = "123";
+        String email = "59999@qq.com";
+        String realname = "123";
+        String phone = "13568682711";
+        String carTravalCode = "000000";
+        String carNum = "000000";
 
-        RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", test, test, test, test, test, test, test,
-                handler, new RegistThread.onResponseListener() {
+
+        RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", username, email, password,
+                realname, phone, carTravalCode, carNum, handler, new RegistThread.onResponseListener() {
             @Override
             public void onSuccess() {
 
@@ -121,5 +142,68 @@ public class ThreadTest extends InstrumentationTestCase {
         }
     }
 
+    public List<String> read(String key) throws IOException {
+        List<String> resultSet = new ArrayList<String>();
 
+        File inputWorkbook = new File("/Users/zhengsuren/Desktop/unit_test.xlsx");
+        if(inputWorkbook.exists()){
+            Workbook w;
+            try {
+                w = Workbook.getWorkbook(inputWorkbook);
+                // Get the first sheet
+                Sheet sheet = w.getSheet(0);
+                // Loop over column and lines
+                for (int j = 0; j < sheet.getRows(); j++) {
+                    Cell cell = sheet.getCell(0, j);
+                    if(cell.getContents().equalsIgnoreCase(key)){
+                        for (int i = 0; i < sheet.getColumns(); i++) {
+                            Cell cel = sheet.getCell(i, j);
+                            resultSet.add(cel.getContents());
+                        }
+                    }
+                    continue;
+                }
+            } catch (BiffException e) {
+                e.printStackTrace();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        else
+        {
+            resultSet.add("File not found..!");
+        }
+        if(resultSet.size()==0){
+            resultSet.add("Data not found..!");
+        }
+        return resultSet;
+    }
+
+    public void readExcel() {
+        try {
+            InputStream is = new FileInputStream("/Users/zhengsuren/test.xls");
+            //Workbook book = Workbook.getWorkbook(new File("mnt/sdcard/test.xls"));
+            Workbook book = Workbook.getWorkbook(is);
+            int num = book.getNumberOfSheets();
+            // 获得第一个工作表对象
+            Sheet sheet = book.getSheet(0);
+            int Rows = sheet.getRows();
+            int Cols = sheet.getColumns();
+            StringBuffer txt = null;
+            txt.append("the name of sheet is " + sheet.getName() + "\n");
+            txt.append("total rows is " + Rows + "\n");
+            txt.append("total cols is " + Cols + "\n");
+            for (int i = 0; i < Cols; ++i) {
+                for (int j = 0; j < Rows; ++j) {
+                    // getCell(Col,Row)获得单元格的值
+                    txt.append("contents:" + sheet.getCell(i, j).getContents() + "\n");
+                }
+            }
+
+            System.out.println("Excel result:~~~~~~~~"+txt.toString());
+            book.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 }
