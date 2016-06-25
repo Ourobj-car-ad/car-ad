@@ -72,14 +72,27 @@ public class ParseJsonTest extends InstrumentationTestCase {
 
     public void testRegistThread() throws Throwable{
         // create  a signal to let us know when our task is done.
+        Looper.prepare();
         Handler handler = new Handler();
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String test = "test005";
+        String test = "test006";
 
         RegistThread registThread = new RegistThread("http://139.129.132.60/api/sign", test, test, test, test, test, test, test,
                 handler, new RegistThread.onResponseListener() {
+            @Override
+            public void onSuccess() {
+
+            }
+
+            @Override
+            public void onfailure(String reason) {
+
+            }
+        });
+
+        registThread.parseJson("{‘errno’:10,’errmsg’:’123’,’data’:{‘type’=’add’}}", new RegistThread.onResponseListener() {
             @Override
             public void onSuccess() {
 
@@ -91,14 +104,6 @@ public class ParseJsonTest extends InstrumentationTestCase {
                 fail(reason);
             }
         });
-
-        registThread.start();
-
-        try {
-            registThread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     public void testAdsThread() throws Throwable{

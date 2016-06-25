@@ -111,7 +111,10 @@ public class RegistThread extends Thread {
                 }
 
                 listener.onfailure("the email already exist");
+                return ;
             }
+
+            listener.onfailure("data format error");
         }
         catch (JSONException e){
             e.printStackTrace();
