@@ -5,6 +5,8 @@ package com.example.zhengsuren.olddriver;
  */
 
 
+import android.app.Activity;
+import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,6 +28,10 @@ import java.util.TimerTask;
 
 import jxl.Sheet;
 import jxl.Workbook;
+
+import static org.hamcrest.core.Is.is;
+import static org.hamcrest.core.IsNull.notNullValue;
+import static org.junit.Assert.assertThat;
 
 
 public class LoginSuccessActivityTest
