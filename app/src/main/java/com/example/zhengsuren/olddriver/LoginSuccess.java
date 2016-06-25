@@ -82,7 +82,7 @@ public class LoginSuccess extends Activity {
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
-               // new LoginThread(email,pwd,handler,mContext).start();
+                // new LoginThread(email,pwd,handler,mContext).start();
                 new LoginThread(email, pwd, handler, new LoginThread.onResponseListener() {
                     @Override
                     public void onSuccess() {

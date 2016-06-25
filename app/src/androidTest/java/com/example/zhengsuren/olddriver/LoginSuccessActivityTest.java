@@ -8,6 +8,8 @@ package com.example.zhengsuren.olddriver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.annotation.UiThreadTest;
 import android.support.test.filters.LargeTest;
@@ -15,8 +17,12 @@ import android.support.test.runner.AndroidJUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 import android.widget.TextView;
 
+import com.example.zhengsuren.olddriver.Network.LoginThread;
+
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import jxl.Sheet;
 import jxl.Workbook;
@@ -32,6 +38,9 @@ public class LoginSuccessActivityTest
     private LoginSuccess mActivity;
     private TextView mview;
     private Context context;
+    private String email = "abc@qq.com";
+    private String pwd = "123456";
+    private Handler handler;
 
     @Override
     public void setUp() throws Exception {
@@ -39,8 +48,8 @@ public class LoginSuccessActivityTest
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
         Intent i = new Intent();
         Bundle bundle = new Bundle();
-        bundle.putString("username","abc@qq.com");
-        bundle.putString("password","123456");
+        bundle.putString("username",email);
+        bundle.putString("password",pwd);
         bundle.putInt("earnings",10);
         i.putExtras(bundle);
         setActivityIntent(i);
@@ -50,12 +59,36 @@ public class LoginSuccessActivityTest
 
     @UiThreadTest
     public void testlogin_success_activity(){
-        String earnings = "10";
-        readExcel();
-        assertEquals("New Text",mview.getText().toString());
+        //assertEquals("New Text",mview.getText().toString());
+        Looper.prepare();
+        handler = new Handler();
+
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                new LoginThread(email, pwd, handler, new LoginThread.onResponseListener() {
+                    @Override
+                    public void onSuccess() {
+
+                    }
+                    @Override
+                    public void onfailure(String reason) {
+                        fail(reason);
+                    }
+                    @Override
+                    public void onExcute() {
+
+                    }
+
+                }).start();
+            }
+        };
+
+        Timer timer = new Timer(true);
+        timer.schedule(task,0,10000);
     }
 
-    public void readExcel() {
+    /*public void readExcel() {
         try {
             context = mActivity.getApplicationContext();
             InputStream is = new FileInputStream(context.getFilesDir() + "/res/test.xls");
@@ -82,6 +115,6 @@ public class LoginSuccessActivityTest
         } catch (Exception e) {
             System.out.println(e);
         }
-    }
+    }*/
 
 }
