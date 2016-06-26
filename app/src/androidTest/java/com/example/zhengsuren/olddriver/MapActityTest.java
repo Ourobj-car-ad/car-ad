@@ -39,7 +39,7 @@ public class MapActityTest extends ActivityInstrumentationTestCase2<Map> {
     private AMap aMap;
     private String email = "abc@qq.com";
     private String pwd = "123456";
-    private String id = "19";
+    private int id = 19;
     private Bundle bundle;
     public AMapLocationClientOption mLocationOption = null;
 
@@ -54,7 +54,7 @@ public class MapActityTest extends ActivityInstrumentationTestCase2<Map> {
         injectInstrumentation(InstrumentationRegistry.getInstrumentation());
         Intent i = new Intent();
         bundle = new Bundle();
-        bundle.putString("id",id);
+        bundle.putInt("id",id);
         bundle.putString("username",email);
         bundle.putString("password",pwd);
         bundle.putInt("earnings",0);

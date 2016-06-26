@@ -5,13 +5,14 @@ package com.example.zhengsuren.olddriver;
  */
 public class AdsInfo {
     //广告信息类
-    private String id,update_time,content,advertiser_id;
+    private String update_time,content,advertiser_id;
+    private int id;
 
     private double ads_per_time;
 
     private int ads_times;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -39,7 +40,7 @@ public class AdsInfo {
         this.ads_times = ads_times;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

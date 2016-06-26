@@ -26,7 +26,8 @@ public class LoginSuccess extends Activity {
     private boolean flag = false;
     private TextView textView;
     private ImageButton bt1,bt5,bt6;
-    private static String id,email,pwd;
+    private static String email,pwd;
+    private static int id;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class LoginSuccess extends Activity {
         //新页面接收数据
         Bundle bundle = this.getIntent().getExtras();
 
-        id = bundle.getString("id");
+        id = bundle.getInt("id");
         email = bundle.getString("email");
         pwd = bundle.getString("pwd");
         Double earnings = bundle.getDouble("earnings");
@@ -161,7 +162,7 @@ public class LoginSuccess extends Activity {
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putString("id",id);
+        outState.putInt("id",id);
         outState.putString("email",email);
         outState.putString("pwd",pwd);
 

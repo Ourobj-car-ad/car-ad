@@ -1,2 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/libs/AMap3DMap_3.3.1_AMapSearch_3.2.1_AMapLocation_2.4.1_20160425.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="2e587918f6875eaa34b2af4fc103792f843cda1d">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/AMap3DMap_3.3.1_AMapSearch_3.2.1_AMapLocation_2.4.1_20160425_d9bce3680f5cd1cf94ef265aa0dbbf5b1cdf03e2.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="5c5699834e9722f1c288fea2de82725d078ba127">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.1.1_bd51af1618242b817d89ee7efef5a31d6d8995bd.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.1/support-annotations-23.1.1.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="8d680ba5a623724d1fb0e81c36a790f023a6cede">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.1_cc014e49075cf1c62c9d59959c0437b141da49eb.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="037d9dee73de1a5f583fed0bd680f0daf1bb1b6a">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_cfff0a65a728281c17a62529417185e9750b4b0f.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="428e9ea07374f417869db517dca50c2a3ef1ac43">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/instant-run_3a511efcd79e3eeef80653c020456f85a2a9f502.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/libs/internal_impl-23.1.1.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="a4de9c81ae239414e1ed0f86441b02abaf29bca9">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.1_86f5bd7f5ab0b36eea406a49c7b7d9bd992ad4fc.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.1/jars/classes.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="6cbc7773921fcfedbe55657578f0cbfe614778dc">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.1.1_5151a79adac1b5c4c7424e8b2573030cbe84f841.jar" />
+    </item>
+    <item
+        jar="/Users/zhengsuren/car-ad-app/app/libs/jxl-2.6.jar"
+        jumboMode="true"
+        revision="24.0.0"
+        sha1="74e55eae5ef7d003167a459965b99239ac6e6b02">
+        <dex dex="/Users/zhengsuren/car-ad-app/app/build/intermediates/pre-dexed/debug/jxl-2.6_c0dcce783e67bd02320d71f55165a9169d1b85c8.jar" />
+    </item>
+
+</items>

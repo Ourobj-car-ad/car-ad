@@ -44,7 +44,8 @@ public class Map extends Activity
     private static Types types;
 
     private String adsUrl = "http://139.129.132.60/api/getbytype";
-    private static String id,url,email,pwd;
+    private static String url,email,pwd;
+    private static int id;
     private static Context mContext;
 
 
@@ -65,7 +66,7 @@ public class Map extends Activity
 
         if (bundle.getInt("fromMain") == 1)
         {
-            id = bundle.getString("id");
+            id = bundle.getInt("id");
             email = bundle.getString("email");
             pwd = bundle.getString("pwd");
             Double earnings = bundle.getDouble("earnings");
@@ -74,7 +75,7 @@ public class Map extends Activity
             Bundle bundle2=new Bundle();
 
             //传递name参数为tinyphp
-            bundle2.putString("id",id);
+            bundle2.putInt("id",id);
             bundle2.putString("email",email);
             bundle2.putString("pwd", pwd);
             bundle2.putDouble("earnings",earnings);

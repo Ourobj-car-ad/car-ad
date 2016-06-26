@@ -21,11 +21,11 @@ public class AdsThread extends Thread {
     //调用了获得广告的api，实现将服务器返回的广告信息解析，并将解析后的数据返回给主线程（LoginSuccess）
 
     private String url;
-    private String id;
+    private int id;
     private String types;
     private onResponseListener listener;
 
-    public AdsThread(String url,String id,String types,onResponseListener listener)
+    public AdsThread(String url,int id,String types,onResponseListener listener)
     {
         this.url = url;
         this.id = id;
@@ -79,7 +79,7 @@ public class AdsThread extends Thread {
                 if (data.length() != 0)
                 {
                     AdsInfo ads = new AdsInfo();
-                    String id = data.getString("id");
+                    int id = data.getInt("id");
                     String update_time = data.getString("title");
                     String content = data.getString("content");
                     String advertiser_id = data.getString("advertiser_id");

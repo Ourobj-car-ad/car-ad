@@ -76,7 +76,7 @@ public class ThreadTest extends InstrumentationTestCase {
         }
     }
 
-    public void testRegistThread() throws Throwable{
+   /* public void testRegistThread() throws Throwable{
         // create  a signal to let us know when our task is done.
         Handler handler = new Handler();
 
@@ -84,7 +84,7 @@ public class ThreadTest extends InstrumentationTestCase {
 
         String username = "130";
         String password = "130";
-        String email = "abc@qq.com";
+        String email = "abc1@qq.com";
         String realname = "130";
         String phone = "13568682718";
         String carTravalCode = "000007";
@@ -112,7 +112,7 @@ public class ThreadTest extends InstrumentationTestCase {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    }*/
 
     public void testAdsThread() throws Throwable{
         // create  a signal to let us know when our task is done.
@@ -120,7 +120,7 @@ public class ThreadTest extends InstrumentationTestCase {
 
         //final CountDownLatch signal = new CountDownLatch(1);
 
-        String test = "abc";
+        int test = 19;
 
         AdsThread adsThread = new AdsThread("http://139.129.132.60/api/getbytype",test,"ha",new AdsThread.onResponseListener() {
             @Override
