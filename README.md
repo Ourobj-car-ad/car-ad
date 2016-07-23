@@ -1,8 +1,10 @@
 # car-ad-app
 
+Warning: 由于专综已经结题,项目已下线, 运行此APP需要自行构建并部署[car-ad-web](https://github.com/Ourobj-car-ad/car-ad-web),并将下列API中对应的IP更改为部署的域名或IP
+
 ## API
 
-### 更新
+### 获取一条精准的投放广告
 
 >http://139.129.132.60/api/getbytype?id=19&types=道路附属设施,道路附属设施
 
@@ -32,7 +34,7 @@ types  //类别的字符串, 以逗号为分割.以下为所有类别
     公共设施
 ```
 
-### 提供给平板app的根据用户id获得当前广告的api
+### 根据用户id获得当前广告
 
 >http://139.129.132.60/api/getbyuserid
 
@@ -41,7 +43,7 @@ types  //类别的字符串, 以逗号为分割.以下为所有类别
 id  //用户的id
 ```
 
-### app退出时发送一个退出消息,用以更新用户状态
+### app退出
 
 >http://139.129.132.60/api/exitwithuserid
 
