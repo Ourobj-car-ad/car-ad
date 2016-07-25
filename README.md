@@ -124,11 +124,3 @@ userId
 regionInfo
 ```
 
-
-
-
-## To Do List
-
-- [ ] 注册功能
-- [ ] 主界面显示广告
-
